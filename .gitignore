@@ -1,0 +1,28 @@
+# Directorios y archivos generados automáticamente
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+/static/
+/media/
+.env
+
+# Virtualenv
+venv/
+ENV/
+
+# Archivos de logs
+*.log
+
+# Archivos de configuración locales
+/local_settings.py
+
+# Archivos de dependencias
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Entorno de desarrollo específico
+.idea/
+.vscode/
