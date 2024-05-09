@@ -6,12 +6,13 @@ __pycache__/
 *.sqlite3
 db.sqlite3
 /static/
-/media/
+*/media/
 .env
 
 # Virtualenv
 venv/
 ENV/
+.venv/
 
 # Archivos de logs
 *.log
