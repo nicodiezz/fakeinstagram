@@ -12,7 +12,7 @@ db.sqlite3
 # Virtualenv
 venv/
 ENV/
-
+.venv/
 # Archivos de logs
 *.log
 
