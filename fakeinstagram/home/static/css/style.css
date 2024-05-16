@@ -1,0 +1,54 @@
+/* Estilo para el body */
+body {
+    margin: 0; /* Elimina los márgenes predeterminados del body */
+    background-color: #000000; /* Fondo negro */
+}
+
+/* Estilo para el header */
+/* Estilo para el header */
+header {
+    text-align: center;
+    background-color: #000000; /* Fondo negro */
+    border-right: 1px solid #333333; /* Borde inferior del header de color gris oscuro */
+    padding: 10px; /* Espaciado interno del header */
+    width: 15%; /* Ancho del header al 100% */
+    height: 100%;
+    position: absolute;
+    top: 0; /* Posición en la parte superior de la página */
+    left: 0; /* Posición en el lateral izquierdo de la página */
+    z-index: 1000; /* Capa superior para asegurar que el header esté por encima del contenido */
+}
+
+header h1{
+    color: #ffffff;
+
+}
+/* Estilo para la lista de navegación */
+nav ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none; /* Elimina las viñetas de la lista */
+    margin: 0; /* Elimina los márgenes predeterminados */
+    padding: 0; /* Elimina el relleno predeterminado */
+}
+
+/* Estilo para cada elemento de la lista de navegación */
+nav ul li {
+    display: inline-block; /* Mostrar los elementos en línea */
+    margin: 10px; /* Margen derecho entre elementos */
+}
+
+/* Estilo para los enlaces en la lista de navegación */
+nav ul li a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: #ffffff; /* Cambia el color del texto a blanco */
+    object-fit: scale-down;
+}
+
+/* Estilo para los iconos */
+nav ul li img {
+    width: 30px; /* Ancho de los iconos */
+    height: 30px; /* Altura de los iconos */
+    vertical-align: middle; /* Alinear verticalmente los iconos */
+    filter: invert(1); /* Invierte los colores de la imagen para que los iconos sean blancos */
+}

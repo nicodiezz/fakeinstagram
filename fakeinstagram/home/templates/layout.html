@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}Fake Instagram{% endblock title%}</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Instagram</h1>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}"><img src="{% static 'images\home_icon.png' %}"> Home</a>
+                </li>
+                <li>
+                    <a href="#"><img src="{% static 'images/search_icon.webp' %}"> Search</a>
+                </li>
+                <li>
+                    <a href="#"><img src="{% static 'images/profile_icon.webp' %}" alt=""> Profile</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}{% endblock content %}
+</body>
+</html>

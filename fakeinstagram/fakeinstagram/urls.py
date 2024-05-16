@@ -19,6 +19,7 @@ from django.urls import path, include
 from fakeinstagram.settings import LOCAL_APPS
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',include('home.urls'))
 ]
 
 for app in LOCAL_APPS:
