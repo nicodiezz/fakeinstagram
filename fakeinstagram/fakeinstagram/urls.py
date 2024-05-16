@@ -27,3 +27,8 @@ for app in LOCAL_APPS:
         path(f'{app}/',include(f'{app}.urls'))
     except ModuleNotFoundError:
         pass
+
+from .settings import DEBUG,MEDIA_URL,MEDIA_ROOT
+from django.conf.urls.static import static
+if DEBUG:
+    urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.db import models
 # Create your models here.
 class CustomUser(AbstractUser):
-    profile_image = models.ImageField(_("profile image"), upload_to="proflie_images", default=None,null=True,blank=True)
+    profile_image = models.ImageField(_("profile image"), upload_to="profile_images", default=None,null=True,blank=True)
     biography = models.CharField(_("boigraphy"), max_length=100, default=None,null=True,blank=True)
     website = models.URLField(_("website"), max_length=200, default=None,null=True,blank=True)
     
