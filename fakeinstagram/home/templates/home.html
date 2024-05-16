@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+{% for post in posts  %}
+
+<!-- HTML -->
+<div class="post">
+    <div class="post-header">
+        <div class="profile-img">
+            <img src="{{ post.user.profile_image.url }}" alt="{{ post.user.username }}">
+        </div>
+        <div class="username">
+            {{ post.user.username }}
+        </div>
+    </div>
+    <div class="post-image">
+        <img src="{{ post.image.url }}" alt="">
+    </div>
+    <div class="post-content">
+        <div class="likes">
+            <span class="heart-icon">&#x2665;</span>
+            <span class="likes-count">{{ post.likes }}</span>
+        </div>
+        <div class="description">
+            {{ post.description }}
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock content %}

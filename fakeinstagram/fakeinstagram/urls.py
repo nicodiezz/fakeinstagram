@@ -19,6 +19,7 @@ from django.urls import path, include
 from fakeinstagram.settings import LOCAL_APPS
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',include('home.urls'))
 ]
 
 for app in LOCAL_APPS:
@@ -26,3 +27,8 @@ for app in LOCAL_APPS:
         path(f'{app}/',include(f'{app}.urls'))
     except ModuleNotFoundError:
         pass
+
+from .settings import DEBUG,MEDIA_URL,MEDIA_ROOT
+from django.conf.urls.static import static
+if DEBUG:
+    urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

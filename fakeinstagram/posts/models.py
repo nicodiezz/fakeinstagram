@@ -9,11 +9,7 @@ class Like(models.Model):
 
     class Meta:
         verbose_name = _("Like")
-        verbose_name_plural = _("Likes")
-
-    def get_absolute_url(self):
-        return reverse("model_detail", kwargs={"pk": self.pk})
-    
+        verbose_name_plural = _("Likes")  
     
 class Post(BaseModel):
     user = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
@@ -26,6 +22,3 @@ class Post(BaseModel):
         verbose_name_plural = _("Posts")
     def __str__(self):
         return f"{self.user.username}'s post"
-    def get_absolute_url(self):
-        return reverse("model_detail", kwargs={"pk": self.pk})
-        
