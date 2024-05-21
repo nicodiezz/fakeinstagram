@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
-{% load static %}
 
 {% block content %}
+
+<main class="home">
 {% for post in posts  %}
 
 <!-- HTML -->
@@ -29,5 +30,5 @@
 </div>
 
 {% endfor %}
-
+</main>
 {% endblock content %}
