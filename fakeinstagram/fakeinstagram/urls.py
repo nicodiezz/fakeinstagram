@@ -19,14 +19,10 @@ from django.urls import path, include
 from fakeinstagram.settings import LOCAL_APPS
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('home.urls'))
+    path('',include('home.urls')),
+    path('accounts/',include('django.contrib.auth.urls')),
+    path('accounts/',include('users.urls'))
 ]
-
-for app in LOCAL_APPS:
-    try:
-        path(f'{app}/',include(f'{app}.urls'))
-    except ModuleNotFoundError:
-        pass
 
 from .settings import DEBUG,MEDIA_URL,MEDIA_ROOT
 from django.conf.urls.static import static
