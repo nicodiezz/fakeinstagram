@@ -1,7 +1,7 @@
 ## CRUD
 #### user
 - [ ] create
-- [ ] read
+- [x] read
 - [ ] update
 - [ ] delete  
   

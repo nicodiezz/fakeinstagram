@@ -1,17 +1,18 @@
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from posts.models import Post
 from users.models import CustomUser
 # Create your views here.
-class PostListView(ListView):
+class PostListView(ListView,LoginRequiredMixin):
     model = Post
     template_name = "home.html"
     context_object_name = "posts"
 
-class SearchView(TemplateView):
+class SearchView(TemplateView,LoginRequiredMixin):
     template_name = "search.html"
 
-class ProfileView(TemplateView):
+class ProfileView(TemplateView,LoginRequiredMixin):
     template_name = "profile.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
