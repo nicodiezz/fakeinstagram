@@ -151,10 +151,20 @@ nav ul li a img {
     width: 100%;
     border-bottom:1px solid #2f2f2f;
 }
+.profile-header .logout{
+    margin-right: 5px;
+}
+.profile-header .logout-btn{
+    background-color: transparent;
+    border: none;
+    color: rgb(207, 30, 30);
+    font-weight: 800;
+    text-transform: capitalize;
+}
 .profile .profile-picture img {
-    aspect-ratio: 1;
     border-radius: 50%;
-    height: 15vh;
+    height: 50px;
+    width: 50px;
     object-fit: cover;
     margin-right: 30px;
 }

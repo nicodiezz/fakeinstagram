@@ -1,19 +1,8 @@
-## CRUD
-#### user
-- [ ] create
-- [x] read
-- [ ] update
-- [ ] delete  
-  
-#### post
-- [ ] create
-- [ ] read
-- [ ] update
-- [ ] delete
-
-## Login
-- [ ] registration
+## Login y Signup
+- [x] registration
+- [ ] logout
 - [ ] oauth
+- [ ] manejo de errores
 
 
 ## Home
@@ -36,6 +25,9 @@
 ## Profile
 - [ ] mostrar nombre del user
 - [ ] acceso al website  
+  
 #### others profiles +=
 - [ ] ver posts
 - [ ] follow y unfollow
+
+### Agregar Privacy

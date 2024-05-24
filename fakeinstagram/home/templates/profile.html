@@ -4,9 +4,15 @@
 {% block content %}
 <main class= "profile">
     <section class="profile-header">
+        {% if user.profile_picture %}
         <div class="profile-picture">
             <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
         </div>
+        {% else %}
+        <div class="profile-picture">
+            <img src="{% static 'images/profile_icon.webp' %}" alt="Default Profile Picture">
+        </div>
+        {% endif %}
         <div class="profile-info">
             <h1>{{ user.username }}</h1>
             <div class="profile-stats">
@@ -14,10 +20,28 @@
                 <span><strong>{{ user.followers_count }}</strong> seguidores</span>
                 <span><strong>{{ user.following_count }}</strong> seguidos</span>
             </div>
+            <div class="name">
+                {% if user.first_name %}
+                <p>{{user.first_name}} </p>
+                {% endif %}
+            </div>
+            <div class="website">
+                {% if user.website %}
+                <a href={{user.website}}> {{user.website}} </a>
+                {% endif %}
+            </div>
             <div class="profile-bio">
+                {% if user.biography %}
                 <p>{{ user.biography }}</p>
+                {% endif %}
             </div>
         </div>
+        <form class="logout" action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Log Out</button>
+        </form>
+        
+        
     </section>
 
     <section class="profile-posts">
