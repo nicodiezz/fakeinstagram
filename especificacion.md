@@ -1,6 +1,6 @@
 ## Login y Signup
 - [x] registration
-- [ ] logout
+- [x] logout
 - [ ] oauth
 - [ ] manejo de errores
 
@@ -23,8 +23,8 @@
 - [ ] agregar descripcion
 
 ## Profile
-- [ ] mostrar nombre del user
-- [ ] acceso al website  
+- [x] mostrar nombre del user
+- [x] acceso al website  
   
 #### others profiles +=
 - [ ] ver posts

@@ -21,7 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('home.urls')),
     path('accounts/',include('django.contrib.auth.urls')),
-    path('accounts/',include('users.urls'))
+    path('accounts/',include('users.urls')),
+    path('posts/',include('posts.urls'))
 ]
 
 from .settings import DEBUG,MEDIA_URL,MEDIA_ROOT

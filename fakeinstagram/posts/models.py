@@ -15,7 +15,7 @@ class Like(models.Model):
 class Post(BaseModel):
     user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='posts')
-    description = models.fields.CharField(max_length=256)
+    description = models.fields.CharField(max_length=256,null=True, blank=True)
     likes_count = models.IntegerField(default=0, null=True, blank=True) 
     
     class Meta:
