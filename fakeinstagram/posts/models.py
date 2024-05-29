@@ -2,19 +2,20 @@ from django.db import models
 from base.models import BaseModel
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
+from fakeinstagram.settings import AUTH_USER_MODEL
 # Create your models here.
 class Like(models.Model):
     post = models.ForeignKey("posts.Post", on_delete=models.CASCADE)
-    user = models.ForeignKey("users.CustomUser", on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
 
     class Meta:
         verbose_name = _("Like")
         verbose_name_plural = _("Likes")  
     
 class Post(BaseModel):
-    user = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='posts')
-    description = models.fields.CharField(max_length=256)
+    user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='posts/')
+    description = models.fields.CharField(max_length=256,null=True, blank=True)
     likes_count = models.IntegerField(default=0, null=True, blank=True) 
     
     class Meta:
@@ -25,7 +26,7 @@ class Post(BaseModel):
 
 class Comment(BaseModel):
     post = models.ForeignKey("posts.Post", on_delete=models.CASCADE)
-    user = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
+    user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
     text = models.CharField(max_length=256)
  
     class Meta:
