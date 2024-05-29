@@ -8,7 +8,7 @@
 <!-- HTML -->
 <div class="post">
     <div class="post-header">
-        <div class="profile-img">
+        <div class="profile-picture">
             <img src="{{ post.user.profile_picture.url }}" alt="{{ post.user.username }}">
         </div>
         <div class="username">
@@ -23,9 +23,10 @@
             <span class="heart-icon">&#x2665;</span>
             <span class="likes-count">{{ post.likes }}</span>
         </div>
-        <div class="description">
+        {% if post.description %}
+        <div class="description">  
             {{ post.description }}
-        </div>
+        </div>{% endif %}
     </div>
 </div>
 

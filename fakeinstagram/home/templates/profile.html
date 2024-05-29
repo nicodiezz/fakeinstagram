@@ -14,10 +14,28 @@
                 <span><strong>{{ user.followers_count }}</strong> seguidores</span>
                 <span><strong>{{ user.following_count }}</strong> seguidos</span>
             </div>
+            <div class="name">
+                {% if user.first_name %}
+                <p>{{user.first_name}} </p>
+                {% endif %}
+            </div>
+            <div class="website">
+                {% if user.website %}
+                <a href={{user.website}}> {{user.website}} </a>
+                {% endif %}
+            </div>
             <div class="profile-bio">
+                {% if user.biography %}
                 <p>{{ user.biography }}</p>
+                {% endif %}
             </div>
         </div>
+        <form class="logout" action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="logout-btn">Log Out</button>
+        </form>
+        
+        
     </section>
 
     <section class="profile-posts">
