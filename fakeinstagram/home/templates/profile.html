@@ -4,15 +4,9 @@
 {% block content %}
 <main class= "profile">
     <section class="profile-header">
-        {% if user.profile_picture %}
         <div class="profile-picture">
             <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
         </div>
-        {% else %}
-        <div class="profile-picture">
-            <img src="{% static 'images/profile_icon.webp' %}" alt="Default Profile Picture">
-        </div>
-        {% endif %}
         <div class="profile-info">
             <h1>{{ user.username }}</h1>
             <div class="profile-stats">

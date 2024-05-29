@@ -23,9 +23,10 @@
             <span class="heart-icon">&#x2665;</span>
             <span class="likes-count">{{ post.likes }}</span>
         </div>
-        <div class="description">
+        {% if post.description %}
+        <div class="description">  
             {{ post.description }}
-        </div>
+        </div>{% endif %}
     </div>
 </div>
 

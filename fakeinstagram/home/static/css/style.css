@@ -3,7 +3,10 @@
 }
 /* Estilo para el body */
 body {
+    position: relative;
+    top: 320px;
     height: 100vh;
+    overflow-y: scroll;
     margin: 0; /* Elimina los márgenes predeterminados del body */
     background-color: #000000; /* Fondo negro */
 }
@@ -90,13 +93,13 @@ nav ul li a img {
     font-weight: bold;
 }
 .post-image{
-    width: 90%;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
 }
 .post-image img {
-    width: 100%;
     display: block;
-    aspect-ratio: 1;
-    object-fit: cover;
+    object-fit: scale-down;
 }
 
 .post-content {
@@ -190,13 +193,13 @@ nav ul li a img {
 
 .profile-posts {
     display: grid;
-    column-count: 3;
+    grid-template-columns: repeat(3, 1fr); 
     gap: 10px;
 }
 
 .profile-posts .post {
-    width: 30%;
-    aspect-ratio: 1;
+    width: 100%; 
+    aspect-ratio: 1; 
     overflow: hidden;
 }
 
@@ -205,6 +208,7 @@ nav ul li a img {
     height: 100%;
     object-fit: cover;
 }
+
 
 
 /*          LOGIN       */
