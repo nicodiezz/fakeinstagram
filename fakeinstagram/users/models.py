@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from django.db import models
 from fakeinstagram.settings import AUTH_USER_MODEL
 from django.contrib.auth.models import UserManager
+from django.urls import reverse
 # Create your models here.
 class CustomUser(AbstractUser):
     profile_picture = models.ImageField(_("profile picture"), upload_to="profile_picture/", default="profile_picture/default_profile_picture.webp",null=True,blank=True)
@@ -27,3 +28,6 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    def get_absolute_url(self):
+        return reverse("user_detail", kwargs={"pk": self.pk})
