@@ -9,7 +9,7 @@
         <button type="submit"><img src="{% static 'images/search_icon.webp' %}" alt=""></button>
     </form>
     {% for user in users %}
-        <a class="user" href="#">
+        <a class="user" href="{% url 'user_detail' user.id %}">
             <div class="profile-picture">
                 <img src="{{user.profile_picture.url}}" alt="Profile picture">
             </div>
