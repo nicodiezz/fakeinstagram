@@ -11,6 +11,14 @@ class PostListView(LoginRequiredMixin, ListView):
 
 class SearchView(LoginRequiredMixin, TemplateView):
     template_name = "search.html"
+    users = None
+    def post(self, request, *args, **kwargs):
+        key = request.POST.get("key")
+        self.users = CustomUser.objects.filter(username__icontains=key)
+        context = super().get_context_data(**kwargs)
+        context["users"] = self.users
+        return super().render_to_response(context)
+    
 
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = "profile.html"
