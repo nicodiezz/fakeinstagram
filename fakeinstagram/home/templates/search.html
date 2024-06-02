@@ -3,6 +3,18 @@
 
 {% block content %}
 <div class="search">
-    <input type="text" name="search" placeholder="Buscar">
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="key" placeholder="Search...">
+        <button type="submit"><img src="{% static 'images/search_icon.webp' %}" alt=""></button>
+    </form>
+    {% for user in users %}
+        <a class="user" href="{% url 'user_detail' user.id %}">
+            <div class="profile-picture">
+                <img src="{{user.profile_picture.url}}" alt="Profile picture">
+            </div>
+            <p>{{ user.username }}</p>
+        </a>
+    {% endfor %}
 </div>
 {% endblock content %}

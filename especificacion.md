@@ -14,20 +14,20 @@
 - [ ] acceder al perfil del que publica, el que da like y el que comenta 
 
 ## Search
-- [ ] buscar usuarios
+- [x] buscar usuarios
 - [ ] agregar historial de busqueda a la session
 
 ## New post
-- [ ] subir foto
-- [ ] recortar foto
-- [ ] agregar descripcion
+- [x] subir foto
+- [x] agregar descripcion
 
 ## Profile
 - [x] mostrar nombre del user
-- [x] acceso al website  
+- [ ] acceso al website  
   
 #### others profiles +=
-- [ ] ver posts
-- [ ] follow y unfollow
+- [ ] ver posts_detail
+- [x] follow 
+- [ ] unfollow
 
 ### Agregar Privacy
