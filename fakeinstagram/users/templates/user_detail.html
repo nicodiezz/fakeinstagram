@@ -8,7 +8,10 @@
             <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
         </div>
         <div class="profile-info">
-            <h1>{{ user.username }}</h1>
+            <div class="username-follow">
+                <h1>{{ user.username }}</h1>
+                <a href="{% url 'follow' user.id %}" class="follow-button"> Follow </a>
+            </div>
             <div class="profile-stats">
                 <span><strong>{{ user.posts_count }}</strong> publicaciones</span>
                 <span><strong>{{ user.followers_count }}</strong> seguidores</span>

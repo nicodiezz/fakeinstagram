@@ -201,6 +201,20 @@ nav ul li a img {
     font-weight: 800;
     text-transform: capitalize;
 }
+.profile-header .username-follow{
+    display: flex;
+}
+.profile-header .follow-button{
+    margin-left: 20px;
+    padding: 8px;
+    background-color: #1f83cb;
+    text-decoration: none;
+    color: #eee;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    border: #1f83cb solid 1px;
+    border-radius: 5px;
+}
 .profile .profile-picture img {
     border-radius: 50%;
     height: 50px;
