@@ -11,7 +11,11 @@
             <div class="username-follow">
                 <h1>{{ user.username }}</h1>
                 {% if user != request.user %}
+                {% if not following %}
                 <a href="{% url 'follow' user.id %}" class="follow-button"> Follow </a>
+                {% else %}
+                <a href="{% url 'unfollow' user.id%}" class="unfollow-button"> Unfollow </a>
+                {% endif %}
                 {% endif %}
             </div>
             <div class="profile-stats">

@@ -52,8 +52,21 @@ class FollowView(RedirectView):
         user_to_follow.followers_count += 1
         request.user.save()
         user_to_follow.save()
-        return super().dispatch(request,*args, **kwargs)    
+        return super().dispatch(request,*args, **kwargs)  
 
+class UnfollowView(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        user_id = kwargs['pk']
+        user = CustomUser.objects.get(id=user_id)
+        return user.get_absolute_url()
+    def dispatch(self, request, *args, **kwargs):
+        user_to_unfollow = CustomUser.objects.get(id=kwargs['pk'])
+        request.user.following.remove(user_to_unfollow)
+        request.user.following_count -= 1
+        user_to_unfollow.followers_count -= 1
+        request.user.save()
+        user_to_unfollow.save()
+        return super().dispatch(request,*args, **kwargs)
         
     
     
