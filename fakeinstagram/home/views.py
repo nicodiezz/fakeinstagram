@@ -18,16 +18,3 @@ class SearchView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context["users"] = self.users
         return super().render_to_response(context)
-    
-
-class ProfileView(CustomUserDetailView):
-    template_name = "profile.html"
-    def get_queryset(self):
-        id = self.request.user.id
-        self.kwargs["pk"] = id
-        return super().get_queryset()
-        
-    
-
-
-

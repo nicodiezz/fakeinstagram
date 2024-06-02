@@ -38,7 +38,6 @@ class CustomUserDetailView(LoginRequiredMixin,DetailView):
         #check if user is followed by session user
         if self.request.user.following.filter(id = user.id):
             context["following"] = True
-        
         return context
     
 class FollowView(RedirectView):
