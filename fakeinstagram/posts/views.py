@@ -15,6 +15,9 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form = self.get_form()
         form.instance.user = self.request.user
         if form.is_valid():
+            user = self.request.user
+            user.posts_count+=1
+            user.save()
             return self.form_valid(form)
         else:
             return self.form_invalid(form)     
