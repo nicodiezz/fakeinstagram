@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href="{% url 'user_detail' user.id %}">
+                <a href="{% url 'user_detail' request.user.id %}">
                     <img src="{% static 'images/profile_icon.webp' %}" alt="Profile">
                 </a>
             </li>
