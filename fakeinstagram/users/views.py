@@ -33,7 +33,7 @@ class CustomUserDetailView(LoginRequiredMixin,DetailView):
         context = super().get_context_data(**kwargs)
         #get posts:
         user = self.get_object()
-        context["posts"] = user.post_set.all()
+        context["posts"] = user.post_set.all().order_by('-created_at')
 
         #check if user is followed by session user
         if self.request.user.following.filter(id = user.id):
