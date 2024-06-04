@@ -8,6 +8,7 @@ body {
     overflow-y: scroll;
     margin: 0; /* Elimina los márgenes predeterminados del body */
     background-color: #000000; /* Fondo negro */
+    width: 100%;
 }
 
 /* CSS */
@@ -189,9 +190,6 @@ nav ul li a img {
     margin-bottom: 20px;
     width: 100%;
     border-bottom:1px solid #2f2f2f;
-}
-.profile-header .logout{
-    margin-right: 5px;
 }
 .profile-header .logout-btn{
     background-color: transparent;
