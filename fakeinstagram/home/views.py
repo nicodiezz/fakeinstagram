@@ -8,7 +8,10 @@ class PostListView(LoginRequiredMixin, ListView):
     model = Post
     template_name = "home.html"
     context_object_name = "posts"
-
+    def get_queryset(self,*args, **kwargs):
+        posts = Post.objects.filter(user__in=self.request.user.following.all()).order_by('-created_at')
+        return posts
+    
 class SearchView(LoginRequiredMixin, TemplateView):
     template_name = "search.html"
     users = None
