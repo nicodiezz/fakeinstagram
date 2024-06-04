@@ -8,12 +8,14 @@
 <!-- HTML -->
 <div class="post">
     <div class="post-header">
+        <a href="{% url 'user_detail' post.user.id %}">
         <div class="profile-picture">
             <img src="{{ post.user.profile_picture.url }}" alt="{{ post.user.username }}">
         </div>
         <div class="username">
             {{ post.user.username }}
         </div>
+    </a>
     </div>
     <div class="post-image">
         <img src="{{ post.image.url }}" alt="">

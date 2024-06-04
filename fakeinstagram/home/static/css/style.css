@@ -76,10 +76,12 @@ nav ul li a img {
     flex-direction: column;
 }
 
-.post-header {
+.post-header a{
     padding: 10px;
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: #fff;
 }
 
 .profile-picture img {
