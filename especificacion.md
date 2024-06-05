@@ -27,7 +27,8 @@
 ## Profile
 - [x] mostrar posts del usuario
 - [x] mostrar nombre del user
-- [ ] acceso al website  
+- [ ] agregar last name
+- [ ] acceso al website (en nueva pestaña y short url) 
 - [ ] editar perfil
   
 #### others profiles +=
@@ -45,3 +46,4 @@
 
 #### lo ultimo:
     corregir q header no tape body
+    y agregar padding horizontal

@@ -40,10 +40,13 @@
             </div>
         </div>
         {% if user == request.user %}
-        <form class="logout" action="{% url 'logout' %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" class="logout-btn">Log Out</button>
-        </form>
+        <div class="user_options">
+            <form class="logout" action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">Log Out</button>
+            </form>
+            <a href="{% url 'edit_profile' %}" class="edit_profile-btn"> Edit Profile </a>
+        </div>
         {% endif %}
     </section>
 

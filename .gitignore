@@ -27,3 +27,4 @@ pip-delete-this-directory.txt
 # Entorno de desarrollo específico
 .idea/
 .vscode/
+especificacion.md
