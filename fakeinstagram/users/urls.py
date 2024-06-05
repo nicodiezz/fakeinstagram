@@ -5,4 +5,5 @@ urlpatterns = [
     path("profile/<int:pk>",views.CustomUserDetailView.as_view(),name="user_detail"),
     path("profile/<int:pk>/follow/", views.FollowView.as_view(),name="follow"),
     path("profile/<int:pk>/unfollow/", views.UnfollowView.as_view(),name="unfollow"),
+    path("edit-profile/",views.CustomUserUpdateView.as_view(),name="edit_profile")
 ]
