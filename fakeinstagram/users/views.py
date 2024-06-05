@@ -73,3 +73,8 @@ class CustomUserDetailView(LoginRequiredMixin,DetailView):
 class CustomUserUpdateView(UpdateView):
     model = CustomUser
     template_name = "edit_profile.html"
+    fields="__all__"
+
+    def get_object(self):
+        return self.request.user
+    
