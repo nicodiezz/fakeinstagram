@@ -1,5 +1,6 @@
 ## Login y Signup
 - [x] registration
+- [x] pedir mayotia de edad
 - [x] logout
 - [ ] oauth
 - [ ] manejo de errores
@@ -43,4 +44,4 @@
 ### Agregar Privacy
 
 #### lo ultimo:
-    hacer html de edit profile
+    corregir q header no tape body

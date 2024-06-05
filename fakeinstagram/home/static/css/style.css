@@ -269,6 +269,7 @@ nav ul li a img {
 }
 
 
+/*    ---------   FORMS   ---------------        */
 
 /*          LOGIN       */
 
@@ -448,4 +449,69 @@ input[type="text"]::placeholder, input[type="password"]::placeholder {
 
 .signup-form a:hover {
     text-decoration: underline;
+}
+
+
+/*  EDIT PROFILE    */
+.edit_profile h1{
+    color: #878787;
+    display: block;
+    text-align: center;
+    font-weight: 800;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.update_form {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 70vw;
+}
+
+.update_form input,
+.update_form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #2c2c2e;
+    color: #ccc;
+}
+.update_form input:focus,
+.update_form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.update_form input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.update_form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.profile_picture {
+    display: flex;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile_picture img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.profile_picture input[type="file"] {
+    display: block;
+    margin: 0 auto;
+    border: none;
 }
