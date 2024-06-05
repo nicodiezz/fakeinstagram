@@ -34,4 +34,10 @@
 - [x] follow 
 - [x] unfollow
 
+## Notificaciones
+- [ ] notificaciones de likes
+- [ ] de comentarios
+- [ ] de seguidores
+- [ ] de cumpleaños
+
 ### Agregar Privacy
