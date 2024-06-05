@@ -1,10 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
+<section class="edit_profile">
+<h1> Edit Profile </h1>
 
-<form method="post" class="update_form">
+<form method="post" class="update_form" enctype="multipart/form-data">
     {% csrf_token %}
-    {{form.as_p}}
-
+    <div class="profile_picture">
+        <img src="{{ request.user.profile_picture.url }}" alt="profile picture">
+        <input type="file" name="profile_picture">
+    </div>
+    <input type="text" name="username" placeholder="Username" value="{% if request.user.username %}{{ request.user.username }}{% endif %}">
+    <input type="text" name="first_name" placeholder="First Name" value="{% if request.user.first_name %}{{ request.user.first_name }}{% endif %}">
+    <input type="text" name="last_name" placeholder="Last Name" value="{% if request.user.last_name %}{{ request.user.last_name }}{% endif %}">
+    <input type="email" name="email" placeholder="Email" value="{% if request.user.email %}{{ request.user.email }}{% endif %}">
+    <textarea name="biography" placeholder="Biography">{% if request.user.biography %}{{ request.user.biography }}{% endif %}</textarea>
+    <input type="url" name="website" placeholder="Website" value="{% if request.user.website %}{{ request.user.website }}{% endif %}">
+    <input type="date" name="birth_date" placeholder="Birth Date" value="{% if request.user.birth_date %}{{ request.user.birth_date }}{% endif %}">
+    <input type="submit" value="Submit">    
 </form>
-
+</section>
 {% endblock %}

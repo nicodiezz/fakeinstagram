@@ -41,3 +41,6 @@
 - [ ] de cumpleaños
 
 ### Agregar Privacy
+
+#### lo ultimo:
+    hacer html de edit profile
