@@ -6,12 +6,14 @@
 
 
 ## Home
-- [ ] mostrar posts de los usuarios que sigo
+- [x] mostrar posts de los usuarios que sigo
 - [ ] dar like
 - [ ] comentar
 - [ ] ver likes
 - [ ] ver comentarios
-- [ ] acceder al perfil del que publica, el que da like y el que comenta 
+- [x] acceder al perfil del que publica 
+- [ ] ,el que da like 
+- [ ] y el que comenta 
 
 ## Search
 - [x] buscar usuarios
@@ -22,12 +24,14 @@
 - [x] agregar descripcion
 
 ## Profile
+- [x] mostrar posts del usuario
 - [x] mostrar nombre del user
 - [ ] acceso al website  
+- [ ] editar perfil
   
 #### others profiles +=
 - [ ] ver posts_detail
 - [x] follow 
-- [ ] unfollow
+- [x] unfollow
 
 ### Agregar Privacy

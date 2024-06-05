@@ -1,9 +1,9 @@
-from django.views.generic import FormView, DetailView, RedirectView
+from django.views.generic import FormView, DetailView, RedirectView, UpdateView
 from .forms import CustomUserCreationForm 
 from .models import CustomUser
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from posts.models import Post
+
 # Create your views here.
 class SignUpView(FormView):
     form_class = CustomUserCreationForm
@@ -21,25 +21,6 @@ class SignUpView(FormView):
 #                    context[field] = errors
 #            return context
 
-class CustomUserDetailView(LoginRequiredMixin,DetailView):
-    model = CustomUser
-    template_name = "user_detail.html"
-    context_object_name = "user"
-
-    def get_queryset(self):
-        return CustomUser.objects.filter(id=self.kwargs['pk'])
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        #get posts:
-        user = self.get_object()
-        context["posts"] = user.post_set.all().order_by('-created_at')
-
-        #check if user is followed by session user
-        if self.request.user.following.filter(id = user.id):
-            context["following"] = True
-        return context
-    
 class FollowView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         user_id = kwargs['pk']
@@ -68,8 +49,27 @@ class UnfollowView(RedirectView):
         user_to_unfollow.save()
         return super().dispatch(request,*args, **kwargs)
         
-    
-    
-    
+#CRUD
 
+class CustomUserDetailView(LoginRequiredMixin,DetailView):
+    model = CustomUser
+    template_name = "user_detail.html"
+    context_object_name = "user"
+
+    def get_queryset(self):
+        return CustomUser.objects.filter(id=self.kwargs['pk'])
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #get posts:
+        user = self.get_object()
+        context["posts"] = user.post_set.all().order_by('-created_at')
+
+        #check if user is followed by session user
+        if self.request.user.following.filter(id = user.id):
+            context["following"] = True
+        return context
+
+class CustomUserUpdateView(UpdateView):
+    model = CustomUser
+    template_name = "edit_profile.html"
