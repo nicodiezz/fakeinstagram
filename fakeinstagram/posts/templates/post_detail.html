@@ -2,6 +2,9 @@
 
 {% block content %}
 <main class="post_detail">
+<div class="return_button">
+    <a href="{% url 'user_detail' post.user.id %}"> X </a>
+</div>
 <div class="post">
     <div class="post-header">
         <a href="{% url 'user_detail' post.user.id %}">
