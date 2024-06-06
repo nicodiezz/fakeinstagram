@@ -42,7 +42,7 @@
 - [x] mostrar posts del usuario
 - [x] mostrar nombre del user
 - [ ] agregar last name
-- [ ] acceso al website (en nueva pestaña y short url) 
+- [x] acceso al website
 - [x] editar perfil
 - [ ] ver posts_detail
 #### others profiles +=

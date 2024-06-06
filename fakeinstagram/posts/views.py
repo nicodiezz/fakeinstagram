@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from .models import Post
 from django.urls import reverse_lazy
 from PIL import Image
@@ -21,3 +21,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
             return self.form_valid(form)
         else:
             return self.form_invalid(form)     
+        
+class PostDetailView(DetailView):
+    model = Post
+    template_name = "post_detail.html"
