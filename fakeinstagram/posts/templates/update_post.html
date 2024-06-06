@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<main class="update_post">
+    <h1>Edit Post</h1>
+    <div class="img-container">
+        <img src="{{post.image.url}}" alt="image">
+    </div>
+    <form method="post" class="update_form">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Save">
+    </form>
+</main>
+{% endblock %}
