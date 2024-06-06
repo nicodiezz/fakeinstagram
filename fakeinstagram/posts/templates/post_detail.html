@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<main class="post_detail">
+<div class="post">
+    <div class="post-header">
+        <a href="{% url 'user_detail' post.user.id %}">
+        <div class="profile-picture">
+            <img src="{{ post.user.profile_picture.url }}" alt="{{ post.user.username }}">
+        </div>
+        <div class="username">
+            {{ post.user.username }}
+        </div>
+    </a>
+    </div>
+    <div class="post-image">
+        <img src="{{ post.image.url }}" alt="">
+    </div>
+    <div class="post-content">
+        <div class="likes">
+            <span class="heart-icon">&#x2665;</span>
+            <span class="likes-count">{{ post.likes }}</span>
+        </div>
+        {% if post.description %}
+        <div class="description">  
+            {{ post.description }}
+        </div>{% endif %}
+    </div>
+</div>
+</main>
+{% endblock content %}
