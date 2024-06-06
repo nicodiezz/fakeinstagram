@@ -23,6 +23,10 @@ class Post(BaseModel):
         verbose_name_plural = _("Posts")
     def __str__(self):
         return f"{self.user.username}'s post"
+    
+    def get_absolute_url(self):
+        return reverse("post_detail", kwargs={"pk": self.pk})
+    
 
 class Comment(BaseModel):
     post = models.ForeignKey("posts.Post", on_delete=models.CASCADE)
