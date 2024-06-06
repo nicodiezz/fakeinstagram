@@ -1,3 +1,17 @@
+## Models
+### Post
+- [x] List
+- [] Detail
+- [x] Create
+- [] Update
+- [] Delete
+### User
+- [] List
+- [x] Detail
+- [x] Create
+- [x] Update
+- [] Delete
+
 ## Login y Signup
 - [x] registration
 - [x] pedir mayotia de edad
@@ -30,9 +44,8 @@
 - [ ] agregar last name
 - [ ] acceso al website (en nueva pestaña y short url) 
 - [x] editar perfil
-  
-#### others profiles +=
 - [ ] ver posts_detail
+#### others profiles +=
 - [x] follow 
 - [x] unfollow
 
@@ -45,5 +58,3 @@
 ### Agregar Privacy
 
 #### lo ultimo:
-    corregir q header no tape body
-    y agregar padding horizontal

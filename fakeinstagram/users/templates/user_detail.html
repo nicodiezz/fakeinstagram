@@ -24,8 +24,10 @@
                 <span><strong>{{ user.following_count }}</strong> seguidos</span>
             </div>
             <div class="name">
-                {% if user.first_name %}
-                <p>{{user.first_name}} </p>
+                {% if user.first_name and user.last_name%}
+                <p>{{user.first_name}} {{user.last_name}} </p>
+                {% elif user.firstname %}
+                <p>{{user.firstname}} </p>
                 {% endif %}
             </div>
             <div class="website">
