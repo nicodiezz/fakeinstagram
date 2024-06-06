@@ -1,6 +1,9 @@
 :root{
     color: #ffffff;
 }
+*{
+    box-sizing: border-box;
+}
 /* Estilo para el body */
 body {
     position: absolute;

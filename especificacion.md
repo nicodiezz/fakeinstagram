@@ -29,7 +29,7 @@
 - [x] mostrar nombre del user
 - [ ] agregar last name
 - [ ] acceso al website (en nueva pestaña y short url) 
-- [ ] editar perfil
+- [x] editar perfil
   
 #### others profiles +=
 - [ ] ver posts_detail
