@@ -1,7 +1,7 @@
 ## Models
 ### Post
 - [x] List
-- [] Detail
+- [x] Detail
 - [x] Create
 - [] Update
 - [] Delete
@@ -41,7 +41,7 @@
 ## Profile
 - [x] mostrar posts del usuario
 - [x] mostrar nombre del user
-- [ ] agregar last name
+- [x] agregar last name
 - [x] acceso al website
 - [x] editar perfil
 - [ ] ver posts_detail

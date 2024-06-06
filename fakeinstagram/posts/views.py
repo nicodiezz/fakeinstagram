@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 from .models import Post
 from django.urls import reverse_lazy
 from PIL import Image
@@ -25,3 +25,8 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 class PostDetailView(DetailView):
     model = Post
     template_name = "post_detail.html"
+
+class PostUpdateView(UpdateView):
+    model = Post
+    template_name = "update_post.html"
+    fields= ("description",)
