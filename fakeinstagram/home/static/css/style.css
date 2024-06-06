@@ -65,13 +65,13 @@ nav ul li a img {
     align-items: center;
 }
 /* POST*/
-.home .post{
+.home .post, .post_detail .post{
     padding: 20px;
 }
 
 /*__user*/
 /* CSS */
-.home .post {
+.home .post, .post_detail .post {
     margin-bottom: 20px;
     background-color: #111;
     border-radius: 3px;
