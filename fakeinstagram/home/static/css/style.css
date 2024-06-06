@@ -65,12 +65,26 @@ nav ul li a img {
     align-items: center;
 }
 /* POST*/
+.post_detail .return_button{
+    position: absolute;
+    top: 10vh;
+    right: 10vw;
+    background-color: #1c1c1e;
+    border: #1c1c1e solid 1px;
+    border-radius: 50%;
+    padding: 10px;
+}
+.post_detail .return_button a{
+    text-decoration: none;
+    color: #878787;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    line-height: 10px;
+}
 .home .post, .post_detail .post{
     padding: 20px;
 }
-
-/*__user*/
-/* CSS */
 .home .post, .post_detail .post {
     margin-bottom: 20px;
     background-color: #111;
