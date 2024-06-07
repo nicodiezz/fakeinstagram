@@ -17,6 +17,7 @@
         </a>
         {% if request.user == post.user %}
         <a href="{% url 'update_post' post.id %}" class="update_post_link">edit</a>
+        <a href="{% url 'delete_post' post.id %}" class="delete_post_link">delete</a>
         {% endif %}
     </div>
     <div class="post-image">
