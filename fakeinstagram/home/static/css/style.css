@@ -80,7 +80,7 @@ nav ul li a img {
     font-family: sans-serif;
     font-weight: bolder;
     font-size: 20px;
-    line-height: 10px;
+    line-height: 1px;
 }
 .home .post, .post_detail .post{
     padding: 20px;
@@ -483,7 +483,7 @@ input[type="text"]::placeholder, input[type="password"]::placeholder {
 
 
 /*  EDIT PROFILE    */
-.edit_profile h1{
+.edit_profile h1, .update_post h1{
     color: #878787;
     display: block;
     text-align: center;
@@ -544,4 +544,11 @@ input[type="text"]::placeholder, input[type="password"]::placeholder {
     display: block;
     margin: 0 auto;
     border: none;
+}
+
+/*update post */
+.update_post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
