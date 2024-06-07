@@ -58,3 +58,5 @@
 ### Agregar Privacy
 
 #### lo ultimo:
+agregar error messages a layout
+no permitir que el ususario acceda a editar perfil si no es el de la session

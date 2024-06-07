@@ -2,8 +2,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView, UpdateView
 from .models import Post
 from django.urls import reverse_lazy
-from PIL import Image
-import os
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 # Create your views here.
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
@@ -30,3 +30,8 @@ class PostUpdateView(UpdateView):
     model = Post
     template_name = "update_post.html"
     fields= ("description",)
+    def dispatch(self, request, *args, **kwargs):
+        if request.user != self.get_object().user:
+            messages.error(request, "You are not allowed to edit this post")
+            return HttpResponseRedirect(reverse_lazy('home'))
+        return super().dispatch(request, *args, **kwargs)
