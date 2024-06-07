@@ -3,7 +3,7 @@
 - [x] List
 - [x] Detail
 - [x] Create
-- [] Update
+- [x] Update
 - [] Delete
 ### User
 - [] List
@@ -44,7 +44,7 @@
 - [x] agregar last name
 - [x] acceso al website
 - [x] editar perfil
-- [ ] ver posts_detail
+- [x] ver posts_detail
 #### others profiles +=
 - [x] follow 
 - [x] unfollow

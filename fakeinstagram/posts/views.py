@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, RedirectView
 from .models import Post
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -30,6 +30,17 @@ class PostUpdateView(UpdateView):
     model = Post
     template_name = "update_post.html"
     fields= ("description",)
+    def dispatch(self, request, *args, **kwargs):
+        if request.user != self.get_object().user:
+            messages.error(request, "You are not allowed to edit this post")
+            return HttpResponseRedirect(reverse_lazy('home'))
+        return super().dispatch(request, *args, **kwargs)
+    
+class PostDeleteView(DeleteView):
+    model = Post
+    def get_success_url(self):
+        messages.success(self.request, 'Post deleted successfully')
+        return self.get_object().user.get_absolute_url()
     def dispatch(self, request, *args, **kwargs):
         if request.user != self.get_object().user:
             messages.error(request, "You are not allowed to edit this post")
