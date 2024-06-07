@@ -7,14 +7,17 @@
 </div>
 <div class="post">
     <div class="post-header">
-        <a href="{% url 'user_detail' post.user.id %}">
+        <a href="{% url 'user_detail' post.user.id %}" class="user_link">
         <div class="profile-picture">
             <img src="{{ post.user.profile_picture.url }}" alt="{{ post.user.username }}">
         </div>
         <div class="username">
             {{ post.user.username }}
         </div>
-    </a>
+        </a>
+        {% if request.user == post.user %}
+        <a href="{% url 'update_post' post.id %}" class="update_post_link">edit</a>
+        {% endif %}
     </div>
     <div class="post-image">
         <img src="{{ post.image.url }}" alt="">
