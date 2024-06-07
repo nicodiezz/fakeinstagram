@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    template_name = "create_post.html"
+    template_name = "posts/create_post.html"
     fields = ('image','description')
     success_url= reverse_lazy('home')
 
@@ -24,11 +24,11 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         
 class PostDetailView(DetailView):
     model = Post
-    template_name = "post_detail.html"
+    template_name = "posts/post_detail.html"
 
 class PostUpdateView(UpdateView):
     model = Post
-    template_name = "update_post.html"
+    template_name = "posts/update_post.html"
     fields= ("description",)
     def dispatch(self, request, *args, **kwargs):
         if request.user != self.get_object().user:
