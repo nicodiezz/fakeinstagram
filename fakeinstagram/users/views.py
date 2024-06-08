@@ -1,4 +1,4 @@
-from django.views.generic import FormView, DetailView, RedirectView, UpdateView
+from django.views.generic import FormView, DetailView, RedirectView, UpdateView, ListView
 from .forms import CustomUserCreationForm 
 from .models import CustomUser
 from django.urls import reverse_lazy
@@ -77,4 +77,16 @@ class CustomUserUpdateView(UpdateView):
 
     def get_object(self):
         return self.request.user
+
+#   lists
+class BaseUserListView(ListView):
+    model = CustomUser
+    template_name = "user_list.html"
+
+class FollowedListView(BaseUserListView):
+    def get_queryset(self):
+        return self.request.user.followed.all()
     
+class FollowingListView(BaseUserListView):
+    def get_queryset(self):
+        return self.request.user.following.all()

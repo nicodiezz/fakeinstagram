@@ -15,7 +15,7 @@ class CustomUser(AbstractUser):
     followers_count = models.IntegerField(default = 0, null=True,blank=True) 
     posts_count = models.IntegerField(default = 0, null=True,blank=True)   
     
-    following = models.ManyToManyField('self', verbose_name=_("following"), blank=True, default = None)
+    following = models.ManyToManyField('self', verbose_name=_("following"), blank=True, default = None, related_name="followed", symmetrical=False)
 
     #this fields are included to avoid exceptions
     
