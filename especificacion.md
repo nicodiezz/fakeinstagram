@@ -6,7 +6,7 @@
 - [x] Update
 - [x] Delete
 ### User
-- [] List
+- [x] List
 - [x] Detail
 - [x] Create
 - [x] Update
@@ -59,3 +59,4 @@
 
 #### lo ultimo:
 agregar error messages a layout
+Agregar mensaje de vacío a todas las listsviews
