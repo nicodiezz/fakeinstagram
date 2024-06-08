@@ -4,7 +4,7 @@
 - [x] Detail
 - [x] Create
 - [x] Update
-- [] Delete
+- [x] Delete
 ### User
 - [] List
 - [x] Detail
@@ -59,5 +59,3 @@
 
 #### lo ultimo:
 agregar error messages a layout
-no permitir que el ususario acceda a editar perfil si no es el de la session
-no funca restar posts count

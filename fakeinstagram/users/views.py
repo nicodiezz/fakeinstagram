@@ -88,7 +88,17 @@ class BaseUserListView(ListView):
 class FollowedListView(BaseUserListView):
     def get_queryset(self):
         return self.get_user().followed.all()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["list_name"] = "Followed"
+        return context
+    
     
 class FollowingListView(BaseUserListView):
     def get_queryset(self):
         return self.get_user().following.all()
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["list_name"] = "Following"
+        return context
