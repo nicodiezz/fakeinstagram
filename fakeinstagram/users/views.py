@@ -82,9 +82,10 @@ class CustomUserUpdateView(UpdateView):
 class BaseUserListView(ListView):
     model = CustomUser
     template_name = "user_list.html"
+    context_object_name = "users"
     def get_user(self):
-        return CustomUser.objects.filter(id = self.kwargs['pk'])
-
+        user = CustomUser.objects.get(id = self.kwargs['pk'])
+        return user
 class FollowedListView(BaseUserListView):
     def get_queryset(self):
         return self.get_user().followed.all()
