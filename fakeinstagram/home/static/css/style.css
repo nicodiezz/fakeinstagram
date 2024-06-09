@@ -274,6 +274,12 @@ nav ul li a img {
     display: flex;
     gap: 20px;
     margin: 10px 0;
+    margin-right: 10px;
+}
+.profile-stats a{
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
 }
 
 .profile-bio {

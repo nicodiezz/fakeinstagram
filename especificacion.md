@@ -60,3 +60,6 @@
 #### lo ultimo:
 agregar error messages a layout
 Agregar mensaje de vacío a todas las listsviews
+style followers and followed 
+cambiar nombre de followed a folowers
+traducir user_detail al inglés
