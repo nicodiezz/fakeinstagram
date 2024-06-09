@@ -20,7 +20,7 @@
             </div>
             <div class="profile-stats">
                 <a href="#"><strong>{{ user.posts_count }}</strong> posts</a>
-                <a href="{% url 'followed_list' user.id %}"><strong>{{ user.followers_count }}</strong> followers</a>
+                <a href="{% url 'followers_list' user.id %}"><strong>{{ user.followers_count }}</strong> followers</a>
                 <a href="{% url 'following_list' user.id %}"><strong>{{ user.following_count }}</strong> following</a>
             </div>
             <div class="name">
