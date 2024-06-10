@@ -3,7 +3,7 @@ from .forms import CustomUserCreationForm
 from .models import CustomUser
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib import messages
 # Create your views here.
 class SignUpView(FormView):
     form_class = CustomUserCreationForm
@@ -11,15 +11,8 @@ class SignUpView(FormView):
     success_url = reverse_lazy("login")
     def form_valid(self, form):
         form.save()
+        messages.success(self.request,"Welcome to FakeInstagram")
         return super().form_valid(form)
-
-#   Para manejo de errores:    
-#    def get_context_data(self, **kwargs):
-#            context = super().get_context_data(**kwargs)
-#            if self.form_class.errors:
-#                for field,errors in self.form_class.errors.items():
-#                    context[field] = errors
-#            return context
 
 class FollowView(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
@@ -77,6 +70,10 @@ class CustomUserUpdateView(UpdateView):
 
     def get_object(self):
         return self.request.user
+    def form_valid(self, form):
+        messages.success(self.request,"Profile edited succesfully!")
+        return super().form_valid(form)
+    
 
 #   lists
 class BaseUserListView(ListView):
