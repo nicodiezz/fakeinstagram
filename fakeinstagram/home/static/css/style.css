@@ -4,17 +4,15 @@
 *{
     box-sizing: border-box;
 }
-/* Estilo para el body */
 body {
     position: absolute;
     top: 0;
     overflow-y: scroll;
-    margin: 0; /* Elimina los márgenes predeterminados del body */
-    background-color: #000000; /* Fondo negro */
+    margin: 0; 
+    background-color: #000000; 
     width: 100%;
 }
-
-/* CSS */
+/*HEADER*/
 header {
     position: fixed;
     bottom: 0;
@@ -48,9 +46,29 @@ nav ul li a img {
     margin-right: 5px;
     filter: invert(100%);
 }
-
-
-
+/*messages*/
+.messages,.registration_messages{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 48px;
+}
+.registration_messages{
+    bottom: 0;
+}
+.success,.error{
+    display: block;
+    padding: 10px;
+    color: #f0f0f0;
+    height: 28px;
+    width: 100%;
+}
+.success{
+    background-color: #419f1f;
+}
+.error{
+    background-color: #cc2323;
+}
 
 /* CONTENT */
 .content{

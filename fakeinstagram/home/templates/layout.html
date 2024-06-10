@@ -10,21 +10,17 @@
 <body>
     <div class="content">{% block content %}{% endblock content %}</div>
     
-    <div class="success_msg">
-        {% for message in messages.success %}
-            {{ message }}
-        {% endfor %}
-    </div>
-    <div class="error_msg">
-        {% for message in messages.error %}
-            {{ message }}
+    <div class="messages">
+        {% for message in messages %}
+            <p class={{message.tags}}>{{ message }}</p>
         {% endfor %}
         {% if form.errors %}
         {% for error in form.errors %}
-            {{ error }}
+            <p class="error">{{ error }}</p>
         {% endfor %}
         {% endif %}
-    </div>
+    </div> 
+
     <header>
     <nav>
         <ul>

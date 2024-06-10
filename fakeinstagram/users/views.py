@@ -73,7 +73,6 @@ class CustomUserUpdateView(UpdateView):
     def form_valid(self, form):
         messages.success(self.request,"Profile edited succesfully!")
         return super().form_valid(form)
-    
 
 #   lists
 class BaseUserListView(ListView):
@@ -83,6 +82,7 @@ class BaseUserListView(ListView):
     def get_user(self):
         user = CustomUser.objects.get(id = self.kwargs['pk'])
         return user
+
 class FollowersListView(BaseUserListView):
     def get_queryset(self):
         return self.get_user().followers.all()

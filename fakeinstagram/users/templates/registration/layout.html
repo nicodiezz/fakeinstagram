@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div class="content">{% block content %}{% endblock content %}</div>    
+    <div class="content">{% block content %}{% endblock content %}</div>
+    <div class="registration-messages">
+        {% for message in messages %}
+            <p class={{message.tags}}>{{ message }}</p>
+        {% endfor %}
+        {% for error in form.non_field_errors%}
+            <p class="error">{{ error }}</p>
+        {% endfor %}
+    </div>     
 </body>
 </html>
