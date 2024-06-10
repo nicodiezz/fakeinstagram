@@ -8,4 +8,5 @@ urlpatterns = [
     path("edit-profile/",views.CustomUserUpdateView.as_view(),name="edit_profile"),
     path('followers/<pk>',views.FollowersListView.as_view(),name="followers_list"),
     path('following/<pk>',views.FollowingListView.as_view(),name="following_list"),
+    path('delete-profile/',views.CustomUserDeleteView.as_view(), name="delete_user")
     ]

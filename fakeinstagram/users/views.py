@@ -1,3 +1,5 @@
+from django.db.models.base import Model as Model
+from django.db.models.query import QuerySet
 from django.views.generic import FormView, DetailView, RedirectView, UpdateView, DeleteView, ListView
 from .forms import CustomUserCreationForm 
 from .models import CustomUser
@@ -83,11 +85,8 @@ class CustomUserDeleteView(DeleteView):
         messages.success(self.request, 'Profile deleted successfully')
         return HttpResponseRedirect(reverse_lazy('signup'))
     
-    def dispatch(self, request, *args, **kwargs):
-        if request.user != self.get_object():
-            messages.error(request, "You are not allowed to delete this profile")
-            return HttpResponseRedirect(reverse_lazy('home'))
-        return super().dispatch(request, *args, **kwargs)
+    def get_object(self):
+        return self.request.user
     
     def form_valid(self, form):
         user = self.get_object()
