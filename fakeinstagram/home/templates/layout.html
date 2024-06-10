@@ -10,8 +10,22 @@
 <body>
     <div class="content">{% block content %}{% endblock content %}</div>
     
-    <!-- HTML -->
-<header>
+    <div class="success_msg">
+        {% for message in messages.success %}
+            {{ message }}
+        {% endfor %}
+    </div>
+    <div class="error_msg">
+        {% for message in messages.error %}
+            {{ message }}
+        {% endfor %}
+        {% if form.errors %}
+        {% for error in form.errors %}
+            {{ error }}
+        {% endfor %}
+        {% endif %}
+    </div>
+    <header>
     <nav>
         <ul>
             <li>
@@ -36,7 +50,7 @@
             </li>
         </ul>
     </nav>
-</header>
+    </header>
 
     
 </body>
