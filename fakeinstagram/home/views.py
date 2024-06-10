@@ -1,17 +1,7 @@
-from django.views.generic import ListView, TemplateView
+from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from users.views import CustomUserDetailView
-from posts.models import Post
 from users.models import CustomUser
-# Create your views here.
-class PostListView(LoginRequiredMixin, ListView):
-    model = Post
-    template_name = "home.html"
-    context_object_name = "posts"
-    def get_queryset(self,*args, **kwargs):
-        posts = Post.objects.filter(user__in=self.request.user.following.all()).order_by('-created_at')
-        return posts
-    
+# Create your views here.    
 class SearchView(LoginRequiredMixin, TemplateView):
     template_name = "search.html"
     users = None

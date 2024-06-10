@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import BaseModelForm
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, RedirectView
+from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView, RedirectView
 from .models import Post
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -10,6 +10,14 @@ class PostDetailView(DetailView):
     model = Post
     template_name = "posts/post_detail.html"
 
+class PostListView(LoginRequiredMixin, ListView):
+    model = Post
+    template_name = "home.html"
+    context_object_name = "posts"
+    def get_queryset(self,*args, **kwargs):
+        posts = Post.objects.filter(user__in=self.request.user.following.all()).order_by('-created_at')
+        return posts
+        
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     template_name = "posts/create_post.html"
