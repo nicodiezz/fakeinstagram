@@ -10,6 +10,8 @@
             </div>
             <p>{{ user.username }}</p>
         </a>
+        {% empty %}
+        <p>{{user.username}} doesn't have {{list_name|lower}} </p>
         {% endfor %}
     </main>
 {% endblock %}

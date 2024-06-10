@@ -4,8 +4,6 @@
 
 <main class="home">
 {% for post in posts  %}
-
-<!-- HTML -->
 <div class="post">
     <div class="post-header">
         <a href="{% url 'user_detail' post.user.id %}">
@@ -31,7 +29,8 @@
         </div>{% endif %}
     </div>
 </div>
-
+{% empty %}
+<p>No posts yet! Follow more friends to see posts here</p>
 {% endfor %}
 </main>
 {% endblock content %}
