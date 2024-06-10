@@ -1,35 +1,41 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.forms import BaseModelForm
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, RedirectView
 from .models import Post
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 # Create your views here.
+class PostDetailView(DetailView):
+    model = Post
+    template_name = "posts/post_detail.html"
+
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     template_name = "posts/create_post.html"
     fields = ('image','description')
     success_url= reverse_lazy('home')
 
-    def post(self, requets, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         form = self.get_form()
         form.instance.user = self.request.user
         if form.is_valid():
             user = self.request.user
             user.posts_count+=1
             user.save()
+            messages.success(request,"post created succesfully!")
             return self.form_valid(form)
         else:
             return self.form_invalid(form)     
         
-class PostDetailView(DetailView):
-    model = Post
-    template_name = "posts/post_detail.html"
-
 class PostUpdateView(UpdateView):
     model = Post
     template_name = "posts/update_post.html"
     fields= ("description",)
+    def form_valid(self, form):
+        messages.success(self.request,"post edited succesfully!")
+        return super().form_valid(form)
+        
     def dispatch(self, request, *args, **kwargs):
         if request.user != self.get_object().user:
             messages.error(request, "You are not allowed to edit this post")
@@ -47,12 +53,9 @@ class PostDeleteView(DeleteView):
             messages.error(request, "You are not allowed to edit this post")
             return HttpResponseRedirect(reverse_lazy('home'))
         return super().dispatch(request, *args, **kwargs)
-        
     
     def form_valid(self, form):
         user = self.get_object().user
-        print(f"--------- posts = {user.posts_count}")
         user.posts_count -= 1
-        print(f"--------- posts actualizados = {user.posts_count}")
         user.save()
         return super().form_valid(form)
