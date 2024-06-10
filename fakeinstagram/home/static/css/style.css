@@ -571,7 +571,7 @@ input[type="text"]::placeholder, input[type="password"]::placeholder {
 }
 
 /*update post */
-.update_post {
+.update_post, .edit_profile {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -598,7 +598,7 @@ input[type="text"]::placeholder, input[type="password"]::placeholder {
     margin-bottom: 20px;
     color: #9b9b9b;
 }
-.delete_form input[type="submit"] {
+.delete_form input[type="submit"], .delete_profile_btn {
     background-color: #e43846;
     color: #b7b7b7;
     border: none;
@@ -607,10 +607,11 @@ input[type="text"]::placeholder, input[type="password"]::placeholder {
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-decoration: none;
 }
-.delete_form input[type="submit"]:hover {
+.delete_form input[type="submit"]:hover, .delete_profile_btn {
     background-color: #d73a49;
 }
-.delete_form input[type="submit"]:focus {
+.delete_form input[type="submit"]:focus, .delete_profile_btn {
     outline: none;
 }

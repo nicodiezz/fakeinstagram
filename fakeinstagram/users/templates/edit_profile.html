@@ -18,5 +18,8 @@
     <input type="date" name="birth_date" placeholder="Birth Date" value="{% if request.user.birth_date %}{{ request.user.birth_date }}{% endif %}">
     <input type="submit" value="Submit">    
 </form>
+
+<a href="{% url 'delete_user' %}" class="delete_profile_btn"> Delete Profile </a>
+
 </section>
 {% endblock %}
