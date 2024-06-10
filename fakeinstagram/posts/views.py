@@ -4,7 +4,7 @@ from django.views.generic import CreateView, DetailView, ListView, UpdateView, D
 from .models import Post
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 # Create your views here.
 class PostDetailView(DetailView):
     model = Post

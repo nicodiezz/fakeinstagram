@@ -1,9 +1,11 @@
-from django.views.generic import FormView, DetailView, RedirectView, UpdateView, ListView
+from django.views.generic import FormView, DetailView, RedirectView, UpdateView, DeleteView, ListView
 from .forms import CustomUserCreationForm 
 from .models import CustomUser
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.http import HttpResponseRedirect
+
 # Create your views here.
 class SignUpView(FormView):
     form_class = CustomUserCreationForm
@@ -73,6 +75,32 @@ class CustomUserUpdateView(UpdateView):
     def form_valid(self, form):
         messages.success(self.request,"Profile edited succesfully!")
         return super().form_valid(form)
+
+class CustomUserDeleteView(DeleteView):
+    model = CustomUser
+    template_name = "user_confirm_deletion.html"
+    def get_success_url(self):
+        messages.success(self.request, 'Profile deleted successfully')
+        return HttpResponseRedirect(reverse_lazy('signup'))
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user != self.get_object():
+            messages.error(request, "You are not allowed to delete this profile")
+            return HttpResponseRedirect(reverse_lazy('home'))
+        return super().dispatch(request, *args, **kwargs)
+    
+    def form_valid(self, form):
+        user = self.get_object()
+        users = user.following.all()
+        for user in users:
+            user.followers_count -= 1
+            user.save()
+        users = user.followers.all()
+        for user in users:
+            user.following_count -= 1
+            user.save()
+        return super().form_valid(form)
+
 
 #   lists
 class BaseUserListView(ListView):
