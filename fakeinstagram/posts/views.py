@@ -1,4 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models.base import Model as Model
+from django.db.models.query import QuerySet
 from django.forms import BaseModelForm
 from django.http.response import HttpResponse as HttpResponse
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView, RedirectView
@@ -84,3 +86,21 @@ class LikeCreateView(LoginRequiredMixin,RedirectView,CreateView):
             post.likes_count+=1
             post.save()
         return super().post(request, *args, **kwargs)
+    
+class LikeDeleteView(LoginRequiredMixin,RedirectView,DeleteView):
+    model = Like
+    def get_redirect_url(self,pk):
+        return self.request.META.get('HTTP_REFERER')
+    def get_object(self):
+        post = Post.objects.get(id=self.kwargs['pk'])
+        user = self.request.user
+        if post and post.like_set.filter(user=user):
+            like = Like.objects.get(post=post, user=user)
+        return like
+    def delete(self, request, *args, **kwargs):
+        post= self.get_object().post
+        post.likes_count-=1
+        post.save()
+        return super().delete(request, *args, **kwargs)
+        
+
