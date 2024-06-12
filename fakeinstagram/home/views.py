@@ -9,8 +9,8 @@ class SearchView(LoginRequiredMixin, TemplateView):
     template_name = "search.html"
     def get(self, request, *args, **kwargs):
         context = super().get_context_data(**kwargs)
-        search_history = request.session.session_data.get_decoded()['search_history']
-        if search_history:
+        if 'search_history' in request.session:
+            search_history = request.session['search_history']
             context["search_history"] = search_history
         return super().render_to_response(context)
     
@@ -20,10 +20,12 @@ class SearchView(LoginRequiredMixin, TemplateView):
         users = CustomUser.objects.filter(username__icontains=key)
         context = super().get_context_data(**kwargs)
         context["users"] = users
+
         #Store history records
-        data = request.session.session_data.get_decoded()
-        if "search_history" not in data:
-            data["search_history"] = []
-        data["search_history"].append(key)
-                
+        session = request.session
+        if "search_history" not in session:
+            session["search_history"] = []
+        session["search_history"].append(key)
+        session.save()
+               
         return super().render_to_response(context)

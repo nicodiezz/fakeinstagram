@@ -114,8 +114,7 @@ class FollowersListView(BaseUserListView):
         context = super().get_context_data(**kwargs)
         context["list_name"] = "Followers"
         return context
-    
-    
+      
 class FollowingListView(BaseUserListView):
     def get_queryset(self):
         return self.get_user().following.all()
