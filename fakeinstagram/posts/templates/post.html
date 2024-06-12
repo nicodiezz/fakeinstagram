@@ -1,3 +1,4 @@
+{% load static %}
 <div class="post">
     <div class="post-header">
         <a href="{% url 'user_detail' post.user.id %}" class="user_link">
@@ -18,8 +19,11 @@
     </div>
     <div class="post-content">
         <div class="likes">
-            <span class="heart-icon">&#x2665;</span>
             <span class="likes-count">{{ post.likes }}</span>
+            <form method="post" action="{% url 'like_post' post.id %}">
+                {% csrf_token %}
+                <button type="submit"><img src="{% static 'images/empty_heart.png' %}" alt="like button"></button>
+            </form>
         </div>
         {% if post.description %}
         <div class="description">  
