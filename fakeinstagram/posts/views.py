@@ -73,14 +73,14 @@ class PostDeleteView(LoginRequiredMixin,DeleteView):
 #Likes
 class LikeCreateView(LoginRequiredMixin,RedirectView,CreateView):
     model = Like
-    def get_redirect_url(self):
+    def get_redirect_url(self,pk):
         return self.request.META.get('HTTP_REFERER')
     def post(self, request, *args, **kwargs):
-        post = Post.objects.filter(id=kwargs['pk'])
+        post = Post.objects.get(id=kwargs['pk'])
         user = request.user
         if post and not post.like_set.filter(user=user):
             like = Like.objects.create(post=post, user=user)
             like.save()
-            post.likes+=1
+            post.likes_count+=1
             post.save()
         return super().post(request, *args, **kwargs)

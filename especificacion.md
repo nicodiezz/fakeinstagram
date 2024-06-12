@@ -32,7 +32,7 @@
 
 ## Search
 - [x] buscar usuarios
-- [ ] agregar historial de busqueda a la session
+- [x] agregar historial de busqueda a la session
 
 ## New post
 - [x] subir foto
