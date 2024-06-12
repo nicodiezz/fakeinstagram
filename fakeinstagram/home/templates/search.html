@@ -8,6 +8,12 @@
         <input type="text" name="key" placeholder="Search...">
         <button type="submit"><img src="{% static 'images/search_icon.webp' %}" alt=""></button>
     </form>
+    <form method="post">
+        {% csrf_token %}
+        {% for key in search_history %}
+            <button type="submit" name="key" value={{key}}>{{key}}</button>
+        {% endfor %}
+    </form>
     {% for user in users %}
         <a class="user" href="{% url 'user_detail' user.id %}">
             <div class="profile-picture">
@@ -15,6 +21,8 @@
             </div>
             <p>{{ user.username }}</p>
         </a>
+    {%empty%}
+    <p>No users found.</p>
     {% endfor %}
 </div>
 {% endblock content %}
