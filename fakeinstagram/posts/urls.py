@@ -8,6 +8,7 @@ posts = [
 ]
 likes=[
     path('like/<pk>', views.LikeCreateView.as_view(), name="like_post"),
+    path('unlike/<pk>', views.LikeDeleteView.as_view(), name="delete_like")
 ]
 
 urlpatterns= posts+likes
