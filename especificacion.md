@@ -10,7 +10,7 @@
 - [x] Detail
 - [x] Create
 - [x] Update
-- [] Delete
+- [x] Delete
 
 ## Login y Signup
 - [x] registration
@@ -58,4 +58,3 @@
 ### Agregar Privacy
 
 #### lo ultimo:
-ERROR AL ELIMINAR USER

@@ -140,3 +140,7 @@ LOGIN_REDIRECT_URL = reverse_lazy("home")
 LOGOUT_REDIRECT_URL = LOGIN_URL
 
 AUTH_USER_MODEL = "users.CustomUser"
+
+# Sessions
+
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
