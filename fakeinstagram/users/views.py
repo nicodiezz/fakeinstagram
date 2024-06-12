@@ -107,7 +107,7 @@ class BaseUserListView(LoginRequiredMixin,ListView):
         user = CustomUser.objects.get(id = self.kwargs['pk'])
         return user
 
-class FollowersListView(LoginRequiredMixin,BaseUserListView):
+class FollowersListView(BaseUserListView):
     def get_queryset(self):
         return self.get_user().followers.all()
     def get_context_data(self, **kwargs):
@@ -115,7 +115,7 @@ class FollowersListView(LoginRequiredMixin,BaseUserListView):
         context["list_name"] = "Followers"
         return context
       
-class FollowingListView(LoginRequiredMixin,BaseUserListView):
+class FollowingListView(BaseUserListView):
     def get_queryset(self):
         return self.get_user().following.all()
     
