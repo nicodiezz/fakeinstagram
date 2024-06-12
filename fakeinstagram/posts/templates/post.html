@@ -19,7 +19,7 @@
     </div>
     <div class="post-content">
         <div class="likes">
-            <span class="likes-count">{{ post.likes }}</span>
+            <span class="likes-count">{{ post.likes_count }}</span>
             <form method="post" action="{% url 'like_post' post.id %}">
                 {% csrf_token %}
                 <button type="submit"><img src="{% static 'images/empty_heart.png' %}" alt="like button"></button>
