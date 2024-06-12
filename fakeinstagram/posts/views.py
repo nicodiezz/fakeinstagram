@@ -1,12 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import BaseModelForm
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView, RedirectView
-from .models import Post
+from .models import Post,Like
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 # Create your views here.
-class PostDetailView(LoginRequiredMixin,DetailView):
+#Posts
+class PostDetailView(DetailView):
     model = Post
     template_name = "posts/post_detail.html"
 
@@ -67,3 +68,8 @@ class PostDeleteView(LoginRequiredMixin,DeleteView):
         user.posts_count -= 1
         user.save()
         return super().form_valid(form)
+
+#Likes
+class LikeCreateView(LoginRequiredMixin,RedirectView,CreateView):
+    model = Like
+    success_url=reverse_lazy('home')
