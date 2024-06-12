@@ -1,10 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import BaseModelForm
+from django.http.response import HttpResponse as HttpResponse
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView, RedirectView
 from .models import Post,Like
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpRequest, HttpResponseRedirect
 # Create your views here.
 #Posts
 class PostDetailView(DetailView):
@@ -74,3 +75,10 @@ class LikeCreateView(LoginRequiredMixin,RedirectView,CreateView):
     model = Like
     def get_redirect_url(self):
         return self.request.META.get('HTTP_REFERER')
+    def post(self, request, *args, **kwargs):
+        post = Post.objects.filter(id=kwargs['pk'])
+        user = request.user
+        if post and not post.like_set.filter(user=user):
+            like = Like.objects.create(post=post, user=user)
+            like.save()
+        return super().post(request, *args, **kwargs)
