@@ -11,7 +11,7 @@ class SearchView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         if 'search_history' in request.session:
             search_history = request.session['search_history']
-            context["search_history"] = search_history
+            context["search_history"] = search_history[-5:]
         return super().render_to_response(context)
     
     def post(self, request, *args, **kwargs):
@@ -26,6 +26,8 @@ class SearchView(LoginRequiredMixin, TemplateView):
         if "search_history" not in session:
             session["search_history"] = []
         session["search_history"].append(key)
+        if len(session["search_history"])>5:
+            session["search_history"].pop(0)
         session.save()
                
         return super().render_to_response(context)
