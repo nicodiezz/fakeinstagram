@@ -72,4 +72,5 @@ class PostDeleteView(LoginRequiredMixin,DeleteView):
 #Likes
 class LikeCreateView(LoginRequiredMixin,RedirectView,CreateView):
     model = Like
-    success_url=reverse_lazy('home')
+    def get_redirect_url(self):
+        return self.request.META.get('HTTP_REFERER')
