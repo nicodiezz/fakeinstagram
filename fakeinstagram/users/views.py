@@ -17,7 +17,7 @@ class SignUpView(FormView):
         messages.success(self.request,"Welcome to FakeInstagram")
         return super().form_valid(form)
 
-class FollowView(RedirectView):
+class FollowView(LoginRequiredMixin,RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         user_id = kwargs['pk']
         user = CustomUser.objects.get(id=user_id)
@@ -31,7 +31,7 @@ class FollowView(RedirectView):
         user_to_follow.save()
         return super().dispatch(request,*args, **kwargs)  
 
-class UnfollowView(RedirectView):
+class UnfollowView(LoginRequiredMixin,RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         user_id = kwargs['pk']
         user = CustomUser.objects.get(id=user_id)
@@ -66,7 +66,7 @@ class CustomUserDetailView(LoginRequiredMixin,DetailView):
             context["following"] = True
         return context
 
-class CustomUserUpdateView(UpdateView):
+class CustomUserUpdateView(LoginRequiredMixin,UpdateView):
     model = CustomUser
     template_name = "edit_profile.html"
     fields=('profile_picture','username','first_name','last_name','email','biography','website','birth_date')
@@ -77,7 +77,7 @@ class CustomUserUpdateView(UpdateView):
         messages.success(self.request,"Profile edited succesfully!")
         return super().form_valid(form)
 
-class CustomUserDeleteView(DeleteView):
+class CustomUserDeleteView(LoginRequiredMixin,DeleteView):
     model = CustomUser
     template_name = "user_confirm_deletion.html"
     success_url = reverse_lazy('signup')
@@ -99,7 +99,7 @@ class CustomUserDeleteView(DeleteView):
         return super().delete(request,*args, **kwargs)
 
 #   lists
-class BaseUserListView(ListView):
+class BaseUserListView(LoginRequiredMixin,ListView):
     model = CustomUser
     template_name = "user_list.html"
     context_object_name = "users"
@@ -107,7 +107,7 @@ class BaseUserListView(ListView):
         user = CustomUser.objects.get(id = self.kwargs['pk'])
         return user
 
-class FollowersListView(BaseUserListView):
+class FollowersListView(LoginRequiredMixin,BaseUserListView):
     def get_queryset(self):
         return self.get_user().followers.all()
     def get_context_data(self, **kwargs):
@@ -115,7 +115,7 @@ class FollowersListView(BaseUserListView):
         context["list_name"] = "Followers"
         return context
       
-class FollowingListView(BaseUserListView):
+class FollowingListView(LoginRequiredMixin,BaseUserListView):
     def get_queryset(self):
         return self.get_user().following.all()
     

@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 # Create your views here.
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin,DetailView):
     model = Post
     template_name = "posts/post_detail.html"
 
@@ -36,7 +36,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         else:
             return self.form_invalid(form)     
         
-class PostUpdateView(UpdateView):
+class PostUpdateView(LoginRequiredMixin,UpdateView):
     model = Post
     template_name = "posts/update_post.html"
     fields= ("description",)
@@ -50,7 +50,7 @@ class PostUpdateView(UpdateView):
             return HttpResponseRedirect(reverse_lazy('home'))
         return super().dispatch(request, *args, **kwargs)
     
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin,DeleteView):
     model = Post
     def get_success_url(self):
         messages.success(self.request, 'Post deleted successfully')
