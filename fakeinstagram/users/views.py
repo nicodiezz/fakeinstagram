@@ -6,7 +6,6 @@ from .models import CustomUser
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
-from django.http import HttpResponseRedirect
 
 # Create your views here.
 class SignUpView(FormView):
@@ -81,14 +80,12 @@ class CustomUserUpdateView(UpdateView):
 class CustomUserDeleteView(DeleteView):
     model = CustomUser
     template_name = "user_confirm_deletion.html"
-    def get_success_url(self):
-        messages.success(self.request, 'Profile deleted successfully')
-        return HttpResponseRedirect(reverse_lazy('signup'))
-    
+    success_url = reverse_lazy('signup')
+
     def get_object(self):
         return self.request.user
     
-    def form_valid(self, form):
+    def delete(self,request, *args, **kwargs):
         user = self.get_object()
         users = user.following.all()
         for user in users:
@@ -98,8 +95,8 @@ class CustomUserDeleteView(DeleteView):
         for user in users:
             user.following_count -= 1
             user.save()
-        return super().form_valid(form)
-
+        messages.success(self.request, 'Profile deleted successfully')
+        return super().delete(request,*args, **kwargs)
 
 #   lists
 class BaseUserListView(ListView):

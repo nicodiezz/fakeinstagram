@@ -17,7 +17,7 @@
 - [x] pedir mayotia de edad
 - [x] logout
 - [ ] oauth
-- [ ] manejo de errores
+- [x] manejo de errores
 
 
 ## Home
@@ -58,5 +58,4 @@
 ### Agregar Privacy
 
 #### lo ultimo:
-agregar error messages a layout
-Agregar mensaje de vacío a todas las listsviews
+ERROR AL ELIMINAR USER
