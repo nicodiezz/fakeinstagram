@@ -81,4 +81,6 @@ class LikeCreateView(LoginRequiredMixin,RedirectView,CreateView):
         if post and not post.like_set.filter(user=user):
             like = Like.objects.create(post=post, user=user)
             like.save()
+            post.likes+=1
+            post.save()
         return super().post(request, *args, **kwargs)
