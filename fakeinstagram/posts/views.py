@@ -1,26 +1,36 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models.base import Model as Model
-from django.db.models.query import QuerySet
-from django.forms import BaseModelForm
 from django.http.response import HttpResponse as HttpResponse
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView, RedirectView
 from .models import Post,Like
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.http import HttpRequest, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 # Create your views here.
 #Posts
 class PostDetailView(DetailView):
     model = Post
     template_name = "posts/post_detail.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = self.get_object()
+        if post.like_set.filter(user=self.request.user).exists():
+            context["liked"]=[post.id]
+        return context
 
 class PostListView(LoginRequiredMixin, ListView):
     model = Post
     template_name = "home.html"
     context_object_name = "posts"
-    def get_queryset(self,*args, **kwargs):
+    def get_queryset(self):
         posts = Post.objects.filter(user__in=self.request.user.following.all()).order_by('-created_at')
         return posts
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        for post in self.get_queryset():
+            if post.like_set.filter(user=self.request.user).exists():
+                context["liked"]= [post.id]
+        return context
         
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
