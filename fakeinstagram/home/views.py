@@ -25,7 +25,8 @@ class SearchView(LoginRequiredMixin, TemplateView):
         session = request.session
         if "search_history" not in session:
             session["search_history"] = []
-        session["search_history"].append(key)
+        if key not in session["search_history"]:
+            session["search_history"].append(key)
         if len(session["search_history"])>5:
             session["search_history"].pop(0)
         session.save()
