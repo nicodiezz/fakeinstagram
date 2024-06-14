@@ -13,9 +13,9 @@ class PostDetailView(DetailView):
     template_name = "posts/post_detail.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        post = self.get_object()
+        post = self.get_object()   
         if post.like_set.filter(user=self.request.user).exists():
-            context["liked"]=[post.id]
+            context["liked"]= [post.id]
         return context
 
 class PostListView(LoginRequiredMixin, ListView):
@@ -27,9 +27,11 @@ class PostListView(LoginRequiredMixin, ListView):
         return posts
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        if "liked" not in context:
+            context["liked"]=[]
         for post in self.get_queryset():
             if post.like_set.filter(user=self.request.user).exists():
-                context["liked"]= [post.id]
+                context["liked"]+= [post.id]
         return context
         
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -108,9 +110,11 @@ class LikeDeleteView(LoginRequiredMixin,RedirectView,DeleteView):
             like = Like.objects.get(post=post, user=user)
         return like
     def post(self, request, *args, **kwargs):
-        post= self.get_object().post
+        like = self.get_object()
+        post= like.post
         post.likes_count-=1
         post.save()
+        like.delete()
         return super().post(request, *args, **kwargs)
         
 
