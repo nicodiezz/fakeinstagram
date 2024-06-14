@@ -140,6 +140,8 @@ nav ul li a img {
 .likes img{
     width: 20px;
     height: 20px;
+}
+.likes .like img{
     filter: invert(1);
 }
 
