@@ -107,10 +107,10 @@ class LikeDeleteView(LoginRequiredMixin,RedirectView,DeleteView):
         if post and post.like_set.filter(user=user):
             like = Like.objects.get(post=post, user=user)
         return like
-    def delete(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         post= self.get_object().post
         post.likes_count-=1
         post.save()
-        return super().delete(request, *args, **kwargs)
+        return super().post(request, *args, **kwargs)
         
 
