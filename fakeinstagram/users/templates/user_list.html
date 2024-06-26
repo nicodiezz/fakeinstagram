@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <main class="users_list">
+    <main class="user_list">
         <h1>{{list_name}}</h1>
         {% for user in users %}
         <a class="user" href="{% url 'user_detail' user.id %}">
