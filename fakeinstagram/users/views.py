@@ -7,6 +7,8 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
+from posts.models import Post
+
 # Create your views here.
 class SignUpView(FormView):
     form_class = CustomUserCreationForm
@@ -106,6 +108,9 @@ class BaseUserListView(LoginRequiredMixin,ListView):
     def get_user(self):
         user = CustomUser.objects.get(id = self.kwargs['pk'])
         return user
+    def get_post(self):
+        post = Post.objects.get(id = self.kwargs['pk'])
+        return post
 
 class FollowersListView(BaseUserListView):
     def get_queryset(self):
@@ -122,4 +127,13 @@ class FollowingListView(BaseUserListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["list_name"] = "Following"
+        return context
+    
+class LikesListView(BaseUserListView):
+    def get_queryset(self):
+        return self.get_post().likes.user_set.all()
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["list_name"] = "Likes"
         return context

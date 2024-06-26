@@ -12,6 +12,11 @@
 - [x] Update
 - [x] Delete
 
+### Comment
+### Like
+- [x] Create
+- [x] Delete
+
 ## Login y Signup
 - [x] registration
 - [x] pedir mayotia de edad
@@ -22,7 +27,7 @@
 
 ## Home
 - [x] mostrar posts de los usuarios que sigo
-- [ ] dar like
+- [x] dar like
 - [ ] comentar
 - [ ] ver likes
 - [ ] ver comentarios
