@@ -8,8 +8,7 @@ posts = [
 ]
 from users.views import LikesListView
 likes=[
-    path('like/<pk>', views.LikeCreateView.as_view(), name="like_post"),
-    path('unlike/<pk>', views.LikeDeleteView.as_view(), name="delete_like"),
+    path('like/<pk>', views.LikeView.as_view(), name="like"),
     path("likes/<pk>", LikesListView.as_view(), name="likes")
 ]
 
