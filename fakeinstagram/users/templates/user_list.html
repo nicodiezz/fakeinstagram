@@ -11,7 +11,7 @@
             <p>{{ user.username }}</p>
         </a>
         {% empty %}
-        <p>{{user.username}} doesn't have {{list_name|lower}} </p>
+        <p> no {{list_name|lower}} yet </p>
         {% endfor %}
     </main>
 {% endblock %}
