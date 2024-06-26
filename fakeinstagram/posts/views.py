@@ -6,6 +6,7 @@ from .models import Post,Like
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 # Create your views here.
 #Posts
 class PostDetailView(DetailView):
@@ -85,36 +86,22 @@ class PostDeleteView(LoginRequiredMixin,DeleteView):
         return super().form_valid(form)
 
 #Likes
-class LikeCreateView(LoginRequiredMixin,RedirectView,CreateView):
+class LikeView(LoginRequiredMixin,RedirectView):
     model = Like
-    def get_redirect_url(self,pk):
+    def get_redirect_url(self):
         return self.request.META.get('HTTP_REFERER')
-    def post(self, request, *args, **kwargs):
-        post = Post.objects.get(id=kwargs['pk'])
+    
+    def post(self, request, pk):
+        post = get_object_or_404(Post,pk=pk)
         user = request.user
-        if post and not post.like_set.filter(user=user):
-            like = Like.objects.create(post=post, user=user)
+        like,created = Like.objects.get_or_create(post=post, user=user)
+        if created:
             like.save()
             post.likes_count+=1
             post.save()
-        return super().post(request, *args, **kwargs)
-    
-class LikeDeleteView(LoginRequiredMixin,RedirectView,DeleteView):
-    model = Like
-    def get_redirect_url(self,pk):
-        return self.request.META.get('HTTP_REFERER')
-    def get_object(self):
-        post = Post.objects.get(id=self.kwargs['pk'])
-        user = self.request.user
-        if post and post.like_set.filter(user=user):
-            like = Like.objects.get(post=post, user=user)
-        return like
-    def post(self, request, *args, **kwargs):
-        like = self.get_object()
-        post= like.post
-        post.likes_count-=1
-        post.save()
-        like.delete()
-        return super().post(request, *args, **kwargs)
-        
+        else:
+            post.likes_count-=1
+            post.save()
+            like.delete()
+        return super().post(request)
 
