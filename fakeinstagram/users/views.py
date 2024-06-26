@@ -131,7 +131,8 @@ class FollowingListView(BaseUserListView):
     
 class LikesListView(BaseUserListView):
     def get_queryset(self):
-        return self.get_post().likes.user_set.all()
+        likes = self.get_post().like_set.all()
+        return [like.user for like in likes]
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
