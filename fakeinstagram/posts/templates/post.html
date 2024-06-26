@@ -20,17 +20,14 @@
     <div class="post-content">
         <div class="likes">
             <a class="likes-count" href="{% url 'likes' post.id %}">{{ post.likes_count }}</a>
-            {% if post.id in liked %}
-            <form method="post" action="{% url 'delete_like' post.id %}">
+            <form method="post" action="{% url 'like' post.id %}">
                 {% csrf_token %}
-                <button class="unlike" type="submit"><img src="{% static 'images/filled_heart.png' %}" alt="like button"></button>
+                {% if post.id in liked %}
+                    <button class="unlike" type="submit"><img src="{% static 'images/filled_heart.png' %}" alt="like button"></button>
+                {% else %}
+                    <button class="like" type="submit"><img src="{% static 'images/empty_heart.png' %}" alt="like button"></button>
+                {% endif %} 
             </form>
-            {% else %}
-            <form method="post" action="{% url 'like_post' post.id %}">
-                {% csrf_token %}
-                <button class="like" type="submit"><img src="{% static 'images/empty_heart.png' %}" alt="like button"></button>
-            </form>
-            {% endif %}    
         </div>
         {% if post.description %}
         <div class="description">  
