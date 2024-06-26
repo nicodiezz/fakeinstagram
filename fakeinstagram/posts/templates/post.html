@@ -19,7 +19,7 @@
     </div>
     <div class="post-content">
         <div class="likes">
-            <span class="likes-count">{{ post.likes_count }}</span>
+            <a class="likes-count" href="{% url 'likes' post.id %}">{{ post.likes_count }}</a>
             {% if post.id in liked %}
             <form method="post" action="{% url 'delete_like' post.id %}">
                 {% csrf_token %}
