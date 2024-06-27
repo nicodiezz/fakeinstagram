@@ -8,11 +8,9 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 # Create your views here.
-#Comments
-class CommentListView(ListView):
-    model = Comment
+
 #Posts
-class PostDetailView(DetailView,CommentListView):
+class PostDetailView(DetailView):
     model = Post
     template_name = "posts/post_detail.html"
     def get_context_data(self, **kwargs):
@@ -20,6 +18,7 @@ class PostDetailView(DetailView,CommentListView):
         post = self.get_object()   
         if post.like_set.filter(user=self.request.user).exists():
             context["liked"]= [post.id]
+        context['comments'] = post.comment_set.all() 
         return context
 
 class PostListView(LoginRequiredMixin, ListView):
@@ -107,3 +106,4 @@ class LikeView(LoginRequiredMixin,RedirectView):
             post.save()
             like.delete()
         return super().post(request)
+    

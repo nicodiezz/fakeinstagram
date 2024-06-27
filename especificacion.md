@@ -13,7 +13,12 @@
 - [x] Delete
 
 ### Comment
+- [ ] List
+- [ ] Create
+- [ ] Delete
+
 ### Like
+- [x] List
 - [x] Create
 - [x] Delete
 
@@ -29,10 +34,10 @@
 - [x] mostrar posts de los usuarios que sigo
 - [x] dar like
 - [ ] comentar
-- [ ] ver likes
+- [x] ver likes
 - [ ] ver comentarios
 - [x] acceder al perfil del que publica 
-- [ ] ,el que da like 
+- [x] ,el que da like 
 - [ ] y el que comenta 
 
 ## Search
@@ -63,3 +68,4 @@
 ### Agregar Privacy
 
 #### lo ultimo:
+add follow btn to users lists

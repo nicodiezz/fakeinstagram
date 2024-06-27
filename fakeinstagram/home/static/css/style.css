@@ -123,12 +123,13 @@ nav ul li a img {
     object-fit: scale-down;
 }
 
-.post-content {
+.post-actions {
     padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .likes {
-    margin-bottom: 10px;
     display: flex;
     align-items: center;
 }
@@ -151,8 +152,14 @@ nav ul li a img {
     margin-left: 5px;
     font-weight: bold;
 }
+.comment-link img {
+    filter: invert(1);
+    width: 25px;
+    height: 25px;
+}
 
 .description {
+    padding: 10px;
     line-height: 1.5;
 }
 

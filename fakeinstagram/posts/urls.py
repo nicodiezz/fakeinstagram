@@ -7,9 +7,12 @@ posts = [
     path('delete-post/<pk>', views.PostDeleteView.as_view(), name="delete_post"),
 ]
 from users.views import LikesListView
-likes=[
+likes = [
     path('like/<pk>', views.LikeView.as_view(), name="like"),
     path("likes/<pk>", LikesListView.as_view(), name="likes")
 ]
 
-urlpatterns= posts+likes
+comments = [
+    ]
+
+urlpatterns = posts + likes + comments

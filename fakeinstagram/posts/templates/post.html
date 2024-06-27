@@ -17,7 +17,7 @@
     <div class="post-image">
         <img src="{{ post.image.url }}" alt="">
     </div>
-    <div class="post-content">
+    <div class="post-actions">
         <div class="likes">
             <a class="likes-count" href="{% url 'likes' post.id %}">{{ post.likes_count }}</a>
             <form method="post" action="{% url 'like' post.id %}">
@@ -29,9 +29,13 @@
                 {% endif %} 
             </form>
         </div>
-        {% if post.description %}
+        <a href="{% url 'post_detail' post.id %}" class="comment-link">
+            <img src="{% static 'images/comment_icon.webp' %}" alt="comment">
+        </a>
+    </div>
+    {% if post.description %}
         <div class="description">  
             {{ post.description }}
-        </div>{% endif %}
-    </div>
+        </div>
+    {% endif %}
 </div>
