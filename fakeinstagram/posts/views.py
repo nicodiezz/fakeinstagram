@@ -2,14 +2,17 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models.base import Model as Model
 from django.http.response import HttpResponse as HttpResponse
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView, RedirectView
-from .models import Post,Like
+from .models import Post, Like, Comment
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 # Create your views here.
+#Comments
+class CommentListView(ListView):
+    model = Comment
 #Posts
-class PostDetailView(DetailView):
+class PostDetailView(DetailView,CommentListView):
     model = Post
     template_name = "posts/post_detail.html"
     def get_context_data(self, **kwargs):
@@ -104,4 +107,3 @@ class LikeView(LoginRequiredMixin,RedirectView):
             post.save()
             like.delete()
         return super().post(request)
-
