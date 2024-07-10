@@ -13,8 +13,8 @@
 - [x] Delete
 
 ### Comment
-- [ ] List
-- [ ] Create
+- [x] List
+- [x] Create
 - [ ] Delete
 
 ### Like
@@ -69,6 +69,8 @@
 
 #### style:
 - [ ] acomodar posts
-
+- [ ] eliminar comentarios de gpt
+- [ ] simpolo +
 #### lo ultimo:
 add follow btn to users lists
+login required a post detailview

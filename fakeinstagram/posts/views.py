@@ -123,3 +123,22 @@ class CommentCreateView(LoginRequiredMixin,CreateView):
         else:
             messages.error(request,"Post couldn't be commented")
             return self.form_invalid(form)
+        
+class CommentDeleteView(LoginRequiredMixin,DeleteView):
+    model = Comment
+    def get_success_url(self):
+        return self.get_object().post.get_absolute_url()
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user != self.get_object().user:
+            messages.error(request, "You are not allowed to delete this post")
+            return HttpResponseRedirect(reverse_lazy('home'))
+        return super().dispatch(request, *args, **kwargs)
+    
+    def form_invalid(self, form):
+        messages.success(self.request, "Comment couldn't be deleted")
+        return super().form_invalid(form)
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Comment deleted successfully')
+        return super().form_valid(form)
