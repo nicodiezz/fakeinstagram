@@ -131,7 +131,7 @@ class CommentDeleteView(LoginRequiredMixin,DeleteView):
     
     def dispatch(self, request, *args, **kwargs):
         if request.user != self.get_object().user:
-            messages.error(request, "You are not allowed to delete this post")
+            messages.error(request, "You are not allowed to delete this comment")
             return HttpResponseRedirect(reverse_lazy('home'))
         return super().dispatch(request, *args, **kwargs)
     
