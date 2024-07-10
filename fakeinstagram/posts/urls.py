@@ -13,6 +13,7 @@ likes = [
 ]
 
 comments = [
-    ]
+    path('comment/<pk>', views.CommentCreateView.as_view(), name="add_comment"),
+]
 
 urlpatterns = posts + likes + comments

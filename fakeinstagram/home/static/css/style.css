@@ -180,7 +180,65 @@ nav ul li a img {
     font-size: 20px;
     line-height: 1px;
 }
+/* Comments*/
+.comment{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: #2b2b2b;
+    border: 1px solid #1c1c1e;
+    padding: 10px;
+}
+.comment .profile-picture{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.comment .comment-text{
+    display: flex;
+    flex-direction: column;
+}
+.comment .comment-text .comment-content{
+    display: flex;
+}
 
+.comment .comment-text .comment-content b{
+    font-weight: 900;
+    margin-right: 6px;
+}
+.comment .comment-text .comment-content p{
+    margin: 0;
+    color: #d6d6d6;
+}
+.comment .profile-picture img{
+    width: 30px;
+    height: 30px;
+}
+.comment .comment-timesince{
+    font-size: 12px;
+    color: #6a6a6a;
+    margin: 5px 0 0;
+}
+/*add comment*/
+.add-comment form{
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background-color: #2b2b2b;
+    border: 1px solid #1c1c1e;
+}
+.add-comment textarea{
+    flex-grow: 8;
+    height: 100%;
+    resize: none;
+}
+.add-comment input{
+    height: 100%;
+    flex-grow: 1;
+    background-color: #1f83cb;
+    color: #fff;
+    border: none;
+}
 /*      SEARCH */
 .user_list{
     display: flex;

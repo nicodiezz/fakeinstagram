@@ -12,9 +12,16 @@
     <h2>Comments</h2>
     {% for comment in comments %}
     <div class="comment">
-    <img src="{{comment.user.profile_picture.url}}" alt="{{comment.user.username}}'s profile picture">
-    <p class="comment-content"><span>{{comment.user.username}}</span>  {{comment.text}}</p>
-    <p class="comment-publication">{{comment.created_at|ago}} </p>
+        <div class="profile-picture">
+            <img src="{{comment.user.profile_picture.url}}" alt="{{comment.user.username}}'s profile picture">
+        </div>
+        <div class="comment-text">
+            <div class="comment-content">
+                <b>{{comment.user.username}}</b>
+                <p>{{comment.text}}</p>
+            </div>
+            <p class="comment-timesince">{{comment.created_at|timesince}}</p>
+        </div>
     </div>
     {% empty %}
     <p> No comments yet </p>

@@ -5,10 +5,10 @@ from django.views.generic import CreateView, DetailView, ListView, UpdateView, D
 from .models import Post, Like, Comment
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpRequest, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from .forms import CommentCreateForm
 # Create your views here.
-
 #Posts
 class PostDetailView(DetailView):
     model = Post
@@ -106,4 +106,21 @@ class LikeView(LoginRequiredMixin,RedirectView):
             post.save()
             like.delete()
         return super().post(request)
+
+#Comments
+class CommentCreateView(LoginRequiredMixin,CreateView):
+    model = Comment
+    form_class= CommentCreateForm
+    def get_success_url(self):
+        return self.get_object().post.get_absolute_url()
     
+    def post(self, request,pk):
+        form = self.get_form()
+        form.instance.user = self.request.user
+        form.instance.post = get_object_or_404(Post,pk=pk)
+        if form.is_valid():
+            messages.success(request,"Post commented succesfully!")
+            return self.form_valid(form)
+        else:
+            messages.error(request,"Post couldn't be commented")
+            return self.form_invalid(form)
