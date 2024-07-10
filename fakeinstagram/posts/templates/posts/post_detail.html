@@ -30,7 +30,7 @@
 <div class="add-comment">
     <form method="POST" action="{% url 'add_comment' post.id %}">
         {% csrf_token %}
-        <textarea name="text" placeholder="Add a comment..."></textarea>
+        <textarea name="text" placeholder="Add a comment..." required=""></textarea>
         <input type="submit" value="Post">
     </form>
 </div>
