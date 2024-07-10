@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<main class="delete_post">
+<main class="confirm-delete-post">
     <form method="post" class="delete_form">
         {% csrf_token %}
         <p>Are you sure you want to delete this post?</p>

@@ -73,4 +73,5 @@
 - [ ] simpolo +
 #### lo ultimo:
 add follow btn to users lists
-login required a post detailview
+login required at post detailview
+merge confirm_delete htmls and add cancel button
