@@ -206,9 +206,13 @@ nav ul li a img {
     font-weight: 900;
     margin-right: 6px;
 }
+.comment .comment-text .comment-content b a{
+    text-decoration: none;
+    color: #fff;
+}
 .comment .comment-text .comment-content p{
     margin: 0;
-    color: #d6d6d6;
+    color: #cecece;
 }
 .comment .profile-picture img{
     width: 30px;

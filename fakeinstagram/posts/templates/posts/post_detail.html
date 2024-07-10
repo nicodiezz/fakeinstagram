@@ -12,12 +12,12 @@
     <h2>Comments</h2>
     {% for comment in comments %}
     <div class="comment">
-        <div class="profile-picture">
+        <a href="{% url 'user_detail' comment.user.id %}" class="profile-picture">
             <img src="{{comment.user.profile_picture.url}}" alt="{{comment.user.username}}'s profile picture">
-        </div>
+        </a>
         <div class="comment-text">
             <div class="comment-content">
-                <b>{{comment.user.username}}</b>
+                <b><a href="{% url 'user_detail' comment.user.id %}">{{comment.user.username}}</a></b>
                 <p>{{comment.text}}</p>
             </div>
             <p class="comment-timesince">{{comment.created_at|timesince}}</p>

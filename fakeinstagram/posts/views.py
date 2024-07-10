@@ -7,7 +7,6 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.http import HttpRequest, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from .forms import CommentCreateForm
 # Create your views here.
 #Posts
 class PostDetailView(DetailView):

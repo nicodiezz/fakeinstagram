@@ -33,9 +33,9 @@
 ## Home
 - [x] mostrar posts de los usuarios que sigo
 - [x] dar like
-- [ ] comentar
+- [x] comentar
 - [x] ver likes
-- [ ] ver comentarios
+- [x] ver comentarios
 - [x] acceder al perfil del que publica 
 - [x] ,el que da like 
 - [ ] y el que comenta 
@@ -72,4 +72,3 @@
 
 #### lo ultimo:
 add follow btn to users lists
-fix -> Comentario vacío
