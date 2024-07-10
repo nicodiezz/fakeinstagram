@@ -223,6 +223,14 @@ nav ul li a img {
     color: #6a6a6a;
     margin: 5px 0 0;
 }
+.comment .delete-comment{
+    margin-left:auto;
+}
+.comment .delete-comment img{
+    height: 1lh;
+    opacity: .8;
+    filter: invert(1);
+}
 /*add comment*/
 .add-comment form{
     display: flex;
