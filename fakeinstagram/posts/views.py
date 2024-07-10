@@ -110,7 +110,7 @@ class LikeView(LoginRequiredMixin,RedirectView):
 #Comments
 class CommentCreateView(LoginRequiredMixin,CreateView):
     model = Comment
-    form_class= CommentCreateForm
+    fields=("text",)
     def get_success_url(self):
         return self.get_object().post.get_absolute_url()
     

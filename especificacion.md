@@ -67,5 +67,9 @@
 
 ### Agregar Privacy
 
+#### style:
+- [ ] acomodar posts
+
 #### lo ultimo:
 add follow btn to users lists
+fix -> Comentario vacío

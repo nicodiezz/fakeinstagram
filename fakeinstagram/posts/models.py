@@ -31,7 +31,7 @@ class Post(BaseModel):
 class Comment(BaseModel):
     post = models.ForeignKey("posts.Post", on_delete=models.CASCADE)
     user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)
-    text = models.CharField(max_length=256)
+    text = models.CharField(max_length=256, blank=False, null=False)
  
     class Meta:
         verbose_name = _("Comment")
