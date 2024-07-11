@@ -355,7 +355,7 @@ nav ul li a img {
 .profile-header .username-follow{
     display: flex;
 }
-.follow-button,.unfollow-button, .profile-header .edit_profile-btn{
+.follow-button,.unfollow-button, .profile-header .edit_profile-btn, .cancel-button{
     padding: 8px;
     text-decoration: none;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -363,7 +363,7 @@ nav ul li a img {
     border: solid 1px;
     border-radius: 5px;
 }
-.follow-button{
+.follow-button, .cancel-button{
     background-color: #1f83cb;
     color: #eee;
     border-color: #1f83cb;
@@ -686,7 +686,7 @@ input[type="text"]::placeholder, input[type="password"]::placeholder {
     align-items: center;
 }
 
-/* Delete Post */
+/* Delete*/
 .confirm-delete{
     display: flex;
     justify-content: center;
@@ -723,4 +723,8 @@ input[type="text"]::placeholder, input[type="password"]::placeholder {
 }
 .delete_form input[type="submit"]:focus, .delete_profile_btn {
     outline: none;
+}
+.confirm-cancel{
+    display: flex;
+    justify-content: center;
 }
