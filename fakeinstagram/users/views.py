@@ -63,11 +63,6 @@ class CustomUserDetailView(LoginRequiredMixin,DetailView):
         user = self.get_object()
         context["posts"] = user.post_set.all().order_by('-created_at')
 
-        #check if user is followed by session user
-        if self.request.user.following.filter(id = user.id):
-            context["following"] = True
-        return context
-
 class CustomUserUpdateView(LoginRequiredMixin,UpdateView):
     model = CustomUser
     template_name = "edit_profile.html"

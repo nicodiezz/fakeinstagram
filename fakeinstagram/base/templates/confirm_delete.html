@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<main class="confirm-delete">
+    <form method="post" class="delete_form">
+        {% csrf_token %}
+        <p>Are you sure you want to delete {{to_delete}}?</p>
+        {{ form }}
+        <div class="confirm-cancel">
+            <input type="submit" value="Confirm">
+            <a href="javascript:history.back()" class="cancel-button">Cancel</a>
+        </div>
+    </form>
+</main>
+{% endblock content %}

@@ -324,7 +324,7 @@ nav ul li a img {
     text-decoration: none;
     color: inherit;
 }
-.user .follow-button{
+.user .follow-button,.user .unfollow-button{
     margin-left: auto;
 }
 
