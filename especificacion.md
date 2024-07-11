@@ -15,7 +15,7 @@
 ### Comment
 - [x] List
 - [x] Create
-- [ ] Delete
+- [x] Delete
 
 ### Like
 - [x] List
@@ -38,7 +38,7 @@
 - [x] ver comentarios
 - [x] acceder al perfil del que publica 
 - [x] ,el que da like 
-- [ ] y el que comenta 
+- [x] y el que comenta 
 
 ## Search
 - [x] buscar usuarios
@@ -71,7 +71,7 @@
 - [ ] acomodar posts
 - [ ] eliminar comentarios de gpt
 - [ ] simpolo +
+- [ ] favicon
 #### lo ultimo:
 add follow btn to users lists
-login required at post detailview
 merge confirm_delete htmls and add cancel button

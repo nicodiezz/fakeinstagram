@@ -4,24 +4,21 @@
     <main class="user_list">
         <h1>{{list_name}}</h1>
         {% for user in users %}
-        <a class="user" href="{% url 'user_detail' user.id %}">
-            <div class="profile-picture">
+        <div class="user">
+            <a class="profile-picture" href="{% url 'user_detail' user.id %}">
                 <img src="{{user.profile_picture.url}}" alt="Profile picture">
-            </div>
-            <p>{{ user.username }}</p>
-
-        </a>
-        {% empty %}
-        <p> no {{list_name|lower}} yet </p>
-        <div class="follow-btn">
+            </a>
+            <a href="{% url 'user_detail' user.id %}">{{ user.username }}</a>
             {% if user != request.user %}
-                {% if not following %}
-                <a href="{% url 'follow' user.id %}" class="follow-button"> Follow </a>
-                {% else %}
-                <a href="{% url 'unfollow' user.id%}" class="unfollow-button"> Unfollow </a>
-                {% endif %}
+                    {% if not following %}
+                    <a href="{% url 'follow' user.id %}" class="follow-button"> Follow </a>
+                    {% else %}
+                    <a href="{% url 'unfollow' user.id%}" class="unfollow-button"> Unfollow </a>
+                    {% endif %}
             {% endif %}
         </div>
+        {% empty %}
+        <p> no {{list_name|lower}} yet </p>
         {% endfor %}
     </main>
 {% endblock %}
