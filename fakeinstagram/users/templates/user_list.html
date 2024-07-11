@@ -9,9 +9,19 @@
                 <img src="{{user.profile_picture.url}}" alt="Profile picture">
             </div>
             <p>{{ user.username }}</p>
+
         </a>
         {% empty %}
         <p> no {{list_name|lower}} yet </p>
+        <div class="follow-btn">
+            {% if user != request.user %}
+                {% if not following %}
+                <a href="{% url 'follow' user.id %}" class="follow-button"> Follow </a>
+                {% else %}
+                <a href="{% url 'unfollow' user.id%}" class="unfollow-button"> Unfollow </a>
+                {% endif %}
+            {% endif %}
+        </div>
         {% endfor %}
     </main>
 {% endblock %}
