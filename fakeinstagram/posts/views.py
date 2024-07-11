@@ -9,7 +9,7 @@ from django.http import HttpRequest, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 # Create your views here.
 #Posts
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin,DetailView):
     model = Post
     template_name = "posts/post_detail.html"
     def get_context_data(self, **kwargs):
