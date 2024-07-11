@@ -70,6 +70,12 @@ class PostUpdateView(LoginRequiredMixin,UpdateView):
     
 class PostDeleteView(LoginRequiredMixin,DeleteView):
     model = Post
+    template_name = "confirm_delete.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["to_delete"] = "this post" 
+        return context
+    
     def get_success_url(self):
         messages.success(self.request, 'Post deleted successfully')
         return self.get_object().user.get_absolute_url()
@@ -126,6 +132,12 @@ class CommentCreateView(LoginRequiredMixin,CreateView):
         
 class CommentDeleteView(LoginRequiredMixin,DeleteView):
     model = Comment
+    template_name = "confirm_delete.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["to_delete"] = "this comment" 
+        return context
+    
     def get_success_url(self):
         return self.get_object().post.get_absolute_url()
     

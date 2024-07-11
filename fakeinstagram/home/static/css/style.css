@@ -687,7 +687,7 @@ input[type="text"]::placeholder, input[type="password"]::placeholder {
 }
 
 /* Delete Post */
-.confirm-delete-post, .confirm-delete-user, .confirm-delete-comment {
+.confirm-delete{
     display: flex;
     justify-content: center;
     align-items: center;

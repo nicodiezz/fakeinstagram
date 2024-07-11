@@ -62,6 +62,7 @@ class CustomUserDetailView(LoginRequiredMixin,DetailView):
         #get posts:
         user = self.get_object()
         context["posts"] = user.post_set.all().order_by('-created_at')
+        return context
 
 class CustomUserUpdateView(LoginRequiredMixin,UpdateView):
     model = CustomUser
@@ -76,9 +77,13 @@ class CustomUserUpdateView(LoginRequiredMixin,UpdateView):
 
 class CustomUserDeleteView(LoginRequiredMixin,DeleteView):
     model = CustomUser
-    template_name = "user_confirm_deletion.html"
     success_url = reverse_lazy('signup')
-
+    template_name = "confirm_delete.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["to_delete"] = "your profile" 
+        return context
+    
     def get_object(self):
         return self.request.user
     
