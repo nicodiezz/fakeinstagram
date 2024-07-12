@@ -68,8 +68,4 @@
 ### Agregar Privacy
 
 #### style:
-- [ ] acomodar posts
-- [ ] eliminar comentarios de gpt
-- [ ] simpolo +
-- [ ] favicon
 #### lo ultimo:

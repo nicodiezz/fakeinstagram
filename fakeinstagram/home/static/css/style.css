@@ -17,7 +17,7 @@ header {
     position: fixed;
     bottom: 0;
     text-align: center;
-    background-color: #000; /* Fondo negro */
+    background-color: #000; 
     padding: 10px 0;
     width: 100vw;
 }
@@ -94,7 +94,10 @@ nav ul li a img {
     display: flex;
     flex-direction: column;
 }
-
+.post-header{
+    display: flex;
+    align-items: center;
+}
 .post-header a{
     padding: 10px;
     display: flex;
@@ -102,6 +105,21 @@ nav ul li a img {
     text-decoration: none;
     color: #fff;
 }
+.post-header .user-actions{
+    margin-left: auto;
+    display: flex;
+}
+.post-header .update_post_link, .post-header .delete_post_link{
+    height: 40px;
+    width: 40px;
+    margin-left: auto;
+}
+.post-header img{
+    width: 100%;
+    object-fit: cover;
+    filter: invert(1);
+}
+
 
 .profile-picture img {
     width: 40px;
@@ -115,7 +133,6 @@ nav ul li a img {
 }
 .post-image{
     width: 400px;
-    height: 400px;
     overflow: hidden;
 }
 .post-image img {
@@ -436,7 +453,6 @@ nav ul li a img {
 
 /*          LOGIN       */
 
-/* instagram_login_dark.css */
 
 .content {
     display: flex;

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title%}Fake Instagram{% endblock title%}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'images/instagram_logo.png' %}" type="image/x-icon">
 </head>
 <body>
     <div class="content">{% block content %}{% endblock content %}</div>
@@ -36,12 +37,12 @@
             </li>
             <li>
                 <a href="{% url 'create_post' %}">
-                    +
+                    <img src="{% static 'images/new_post.png' %}" alt="">
                 </a>
             </li>
             <li>
                 <a href="{% url 'user_detail' request.user.id %}">
-                    <img src="{% static 'images/profile_icon.webp' %}" alt="Profile">
+                    <img src="{% static 'images/profile_icon.png' %}" alt="Profile">
                 </a>
             </li>
         </ul>
