@@ -7,5 +7,53 @@
     {{form.as_p}}
     <button type="submit">Submit</button>
 </form>
+<script>
+    document.getElementById('imageForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar el envío del formulario
+    
+        const input = document.getElementById('id_image');
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    const size = Math.min(img.width, img.height);
+                    const x = (img.width - size) / 2;
+                    const y = (img.height - size) / 2;
+                    
+                    canvas.width = size;
+                    canvas.height = size;
+                    ctx.drawImage(img, x, y, size, size, 0, 0, size, size);
+                    
+                    canvas.toBlob(function(blob) {
+                        const formData = new FormData();
+                        formData.append('csrfmiddlewaretoken', document.querySelector('input[name="csrfmiddlewaretoken"]').value);
+                        formData.append('image', blob, file.name);
+                        formData.append('description', document.getElementById('id_description').value);
+    
+                        // Enviar el formulario mediante POST
+                        fetch(window.location.href, {
+                            method: 'POST',
+                            body: formData
+                        }).then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            // Manejar la respuesta del servidor
+                        }).catch(error => {
+                            console.error('Error:', error);
+                        });
+                    }, 'image/jpeg');
+                };
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>    
 {% endblock content %}
 

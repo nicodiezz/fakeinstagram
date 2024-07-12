@@ -119,8 +119,8 @@ nav ul li a img {
     overflow: hidden;
 }
 .post-image img {
-    display: block;
     object-fit: scale-down;
+    width: 100%;
 }
 
 .post-actions {

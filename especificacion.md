@@ -72,14 +72,4 @@
 - [ ] eliminar comentarios de gpt
 - [ ] simpolo +
 - [ ] favicon
-<<<<<<< Updated upstream
 #### lo ultimo:
-<<<<<<< HEAD
-add follow btn to users lists
-merge confirm_delete htmls and add cancel button
-=======
-#### lo ultimo:
->>>>>>> Stashed changes
-=======
-merge confirm_delete htmls and add cancel button
->>>>>>> 533055d (Add cancel button to confirm_deletion)
