@@ -117,7 +117,7 @@ class CommentCreateView(LoginRequiredMixin,CreateView):
     model = Comment
     fields=("text",)
     def get_success_url(self):
-        return self.get_object().post.get_absolute_url()
+        return self.get_form().instance.post.get_absolute_url()
     
     def post(self, request,pk):
         form = self.get_form()
