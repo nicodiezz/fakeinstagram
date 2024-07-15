@@ -11,3 +11,9 @@ def time_since(value):
         return "today"
     else:
         return f"{timesince(value, depth=1)} ago"
+
+@register.filter(name='following')
+def following(user,request_user):
+    if request_user.following.filter(id = user.id):
+        return True
+    return False
