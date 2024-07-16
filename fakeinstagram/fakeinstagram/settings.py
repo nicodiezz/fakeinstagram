@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-dt)z5vg5dx&7z^ss_v3b+!syc6q=l!(m@^v&1ahq#m69&=(0om
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fakeinstagram.pythonanywhere.com','localhost']
+ALLOWED_HOSTS = ['prueba123456789.pythonanywhere.com','fakeinstagram.pythonanywhere.com','localhost']
 
 
 # Application definition
