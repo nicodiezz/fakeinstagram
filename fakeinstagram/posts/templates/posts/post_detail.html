@@ -4,7 +4,7 @@
 {% block content %}
 <main class="post_detail">
 <div class="return_button">
-    <a href="javascript:history.back()"> X </a>
+    <a href="{% url 'home' %}"> X </a>
 </div>
 <div class="post_detailblock">
 {% include "post.html" with post=post%}
