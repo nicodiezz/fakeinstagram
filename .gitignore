@@ -24,3 +24,6 @@ pip-delete-this-directory.txt
 .idea/
 .vscode/
 especificacion.md
+
+#sqlite3
+fakeinstagram/db.sqlite3
