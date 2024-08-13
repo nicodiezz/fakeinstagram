@@ -46,6 +46,11 @@ nav ul li a img {
     margin-right: 5px;
     filter: invert(100%);
 }
+nav .profile img{
+    filter: invert(0);
+    border: 0 solid black;
+    border-radius: 50%;
+}
 /*messages*/
 .messages,.registration_messages{
     display: flex;
@@ -117,7 +122,6 @@ nav ul li a img {
 .post-header img{
     width: 100%;
     object-fit: cover;
-    filter: invert(1);
 }
 
 

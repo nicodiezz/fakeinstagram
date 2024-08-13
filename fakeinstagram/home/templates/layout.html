@@ -41,8 +41,8 @@
                 </a>
             </li>
             <li>
-                <a href="{% url 'user_detail' request.user.id %}">
-                    <img src="{% static 'images/profile_icon.png' %}" alt="Profile">
+                <a class="profile" href="{% url 'user_detail' request.user.id %}">
+                    <img src="{{ request.user.profile_picture.url }}" alt="Profile">
                 </a>
             </li>
         </ul>
