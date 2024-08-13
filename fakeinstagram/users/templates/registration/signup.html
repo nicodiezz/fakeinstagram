@@ -5,19 +5,6 @@
     <div class="logo">
         <img src="{% static 'images/instagram_text_logo.png' %}" alt="Instagram">
     </div>
-    <div class="social-login">
-        <a href="#" class="facebook-login">
-            <div class="facebook-logo">
-                <img src="{% static 'images/facebook_logo.webp' %}" alt="Facebook">
-            </div>
-            Sign In with Facebook
-        </a>
-    </div>
-    <div class="divider">
-        <div class="line"></div>
-        <div class="or">Or</div>
-        <div class="line"></div>
-    </div>
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
